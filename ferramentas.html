@@ -38,12 +38,16 @@
             background-color: var(--dark-bg);
             color: var(--text-light);
             line-height: 1.6;
+            min-height: 100vh; /* Garantir que o footer fique no final */
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
+            flex-grow: 1; /* Permite que o conteúdo principal ocupe o espaço */
         }
 
         h1, h2, h3 {
@@ -144,6 +148,7 @@
             text-align: center;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            margin-top: auto; /* Empurra o rodapé para baixo */
         }
         
         /* --- ESTILOS ESPECÍFICOS DA PÁGINA FERRAMENTAS --- */
@@ -153,7 +158,6 @@
             padding: 120px 0 80px 0;
             text-align: center;
             color: var(--text-light);
-            /* APLICAÇÃO DA IMAGEM DE FUNDO COM OVERLAY ESCURO (90% OPACIDADE) */
             background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
                               url('imagens/escudo.png'); 
             background-size: cover;
@@ -291,6 +295,13 @@
                 <p class="section-subtitle">Acelere seus processos de compliance, auditoria e gestão de riscos com as ferramentas que utilizamos no dia a dia.</p>
 
                 <div class="tools-grid">
+                    
+                    <div class="tool-card">
+                        <span class="tool-icon">📝</span>
+                        <h3>BIA – Análise de Impacto aos Negócios</h3>
+                        <p>Uma ferramenta interativa para documentar processos críticos, calcular o RTO/RPO e avaliar o impacto de interrupções de forma estruturada, baseada em nossa metodologia.</p>
+                        <a href="bia.html" class="access-button">Acessar BIA</a>
+                    </div>
                     
                     <div class="tool-card">
                         <span class="tool-icon">🔗</span>
