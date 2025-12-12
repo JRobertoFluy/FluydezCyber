@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos Gratuitos | Fluydez Cyber</title>
+    <title>Treinamentos Gratuitos - Iniciante | Fluydez Cyber</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"> 
 
     <style>
-        /* * DESIGN SYSTEM (Fluydez Cyber) - Replicando o padrão */
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Padrão */
         :root {
             --dark-bg: #121212;
             --card-bg: #1C1C1E;
@@ -19,19 +20,8 @@
             --text-light: #F0F0F0;
             --text-secondary: #AAAAAA;
             --highlight-bg: #1A1A1A; 
-            /* Cores de Destaque adicionais (do primeiro bloco) */
-            --color-green: #10B981;
-            --color-blue-dark: #3B82F6;
-            --color-yellow: #F59E0B;
-            --color-pink: #EC4899;
-            --color-purple: #A855F7;
-            --color-amber: #FBBF24;
-            --color-cyan: #06B6D4;
-
-            /* --- Cores dos Níveis (Semáforo) - do segundo bloco, mantidas por serem específicas desta página --- */
-            --level-beginner: #28A745; /* Verde */
-            --level-intermediate: #FFC107; /* Amarelo */
-            --level-advanced: #DC3545; /* Vermelho */
+            --star-color: #FFD700; /* Cor do Ouro para Destaque */
+            --success-green: #28a745; /* Cor Verde para o Nível */
         }
 
         /* --- Reset Básico --- */
@@ -51,6 +41,7 @@
             background-color: var(--dark-bg);
             color: var(--text-light);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         .container {
@@ -65,32 +56,14 @@
         }
         
         section {
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            margin-bottom: 60px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Estilo para destaque da cor azul */
         .text-primary-blue {
             color: var(--primary-blue);
         }
 
-        /* --- Header e Logo --- */
+        /* --- Header (Padrão) --- */
         .header {
             background-color: rgba(18, 18, 18, 0.8);
             backdrop-filter: blur(10px);
@@ -107,7 +80,6 @@
             align-items: center;
         }
 
-        /* Estilos do Logo (Texto + Imagem) */
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
@@ -118,7 +90,6 @@
             gap: 8px;
         }
         
-        /* Estilo da Imagem do Logo */
         .logo-img {
             height: 45px; 
             width: auto;
@@ -144,13 +115,11 @@
             transition: color 0.3s ease;
         }
 
-        .nav-menu a:hover,
-        /* O link "Treinamentos" é o ativo na página de Cursos */
-        .nav-menu a.active { 
+        .nav-menu a:hover, .nav-menu a.active {
             color: var(--primary-blue);
         }
         
-        /* --- Rodapé --- */
+        /* --- Rodapé (Padrão) --- */
         .footer {
             background-color: var(--dark-bg);
             border-top: 1px solid var(--card-bg);
@@ -159,172 +128,161 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-        .footer a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer a:hover {
-            color: var(--light-blue);
-        }
 
-        /* --- ESTILOS ESPECÍFICOS DA PÁGINA CURSOS --- */
-        
-        /* Hero Section com Imagem de Fundo (escudo.png) */
-        #tools-hero {
-            padding: 120px 0 80px 0;
-            text-align: center;
-            color: var(--text-light);
-            /* APLICAÇÃO DA IMAGEM DE FUNDO COM OVERLAY ESCURO (90% OPACIDADE) */
-            /* Imagem de Fundo Corrigida para a URL da imagem de segurança genérica (cadeados.jpeg) ou um caminho real */
-            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
-                              url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop'); /* Usando Imagem Genérica como Placeholder */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
-        }
-
-        #tools-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        #tools-hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-
-        /* Grid de Ferramentas (Layout responsivo com no mínimo 350px) */
-        #tools-list {
+        /* --- SEÇÃO HERO --- */
+        #hero-trainings {
             background-color: var(--highlight-bg);
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        #hero-trainings h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        #hero-trainings p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+        
+        /* Oculta o level-tag no Hero, pois ele será movido */
+        #hero-trainings .level-tag {
+            display: none; 
+        }
+
+        /* --- SEÇÃO DE CURSOS / GRID --- */
+        #course-list {
             padding: 80px 0;
         }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+
+        #course-list h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
         }
         
-        /* Card de Curso (Baseado em tool-card) */
-        .tool-card {
+        /* Estilo para o level-tag na lista de cursos (Verde e alinhado à esquerda) */
+        #course-list .level-tag {
+            display: block; 
+            margin-left: 0; 
+            width: fit-content; /* Se adapta ao conteúdo */
+            background-color: var(--success-green); 
+            color: var(--text-light);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-top: -30px; 
+            margin-bottom: 30px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
             background-color: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
-            border-top: 5px solid var(--primary-blue); /* Padrão, será sobrescrito pelo nível */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
+            border: 1px solid var(--card-bg);
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            /* --- NOVOS ESTILOS FLEXBOX PARA ALINHAR BOTÃO --- */
+            display: flex; 
+            flex-direction: column; 
+            /* ------------------------------------------------ */
         }
 
-        .tool-card:hover {
+        .course-card:hover {
             transform: translateY(-5px);
-            /* box-shadow será sobrescrito pelo nível */
+            border-color: var(--primary-blue);
         }
-        
-        .tool-card h3 {
-            font-size: 1.4rem; /* Um pouco menor para melhor ajuste */
-            color: var(--text-light); /* Cor neutra para o título */
+
+        .course-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .course-card .source {
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            display: block;
             margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--highlight-bg);
         }
-        
-        .tool-card p {
-            font-size: 1rem;
+
+        .course-card .details {
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            min-height: 4em; /* Garante altura mínima para uniformidade */
         }
-        
-        .access-button {
+
+        .course-card .cta-link {
+            /* Existing styles */
             display: inline-block;
-            padding: 12px 25px;
+            padding: 10px 20px;
             background-color: var(--primary-blue);
             color: var(--text-light);
             text-decoration: none;
             border-radius: 6px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            width: 100%;
+            text-align: center;
+            
+            /* --- NOVO ESTILO PARA EMPURRAR PARA BAIXO --- */
+            margin-top: auto; 
+            /* ------------------------------------------- */
         }
 
-        .access-button:hover {
+        .course-card .cta-link:hover {
             background-color: var(--light-blue);
-            transform: scale(1.05);
         }
         
-        /* Ícone (simulação com emoji, idealmente seria um SVG ou Font Awesome) */
-        .tool-icon {
-            font-size: 3rem;
+        /* Redução do tamanho da estrela em 30% */
+        .star-rating {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.85rem; 
+            color: var(--star-color);
+        }
+
+        /* --- Seção de FAQ/Aviso --- */
+        #disclaimer {
+            background-color: var(--highlight-bg);
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-align: center;
+            border-top: 1px solid var(--card-bg);
+        }
+        
+        #disclaimer p {
             margin-bottom: 10px;
-            display: block;
-            color: var(--primary-blue);
         }
-
-        /* --- Estilos do Semáforo (Cores de Nível) --- */
-        
-        .course-level {
-            display: inline-block;
-            padding: 5px 10px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: var(--dark-bg);
-        }
-
-        /* Iniciante (Green) */
-        .level-beginner {
-            border-top: 5px solid var(--level-beginner);
-        }
-        .level-beginner:hover {
-            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3); 
-        }
-        .level-beginner .course-level { 
-            background-color: var(--level-beginner); 
-            color: var(--dark-bg); /* Garante contraste */
-        }
-
-        /* Intermediário (Yellow) */
-        .level-intermediate {
-            border-top: 5px solid var(--level-intermediate);
-        }
-        .level-intermediate:hover {
-            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3); 
-        }
-        .level-intermediate .course-level { 
-            background-color: var(--level-intermediate); 
-            color: var(--dark-bg); /* Garante contraste */
-        }
-
-        /* Avançado (Red) */
-        .level-advanced {
-            border-top: 5px solid var(--level-advanced);
-        }
-        .level-advanced:hover {
-            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3); 
-        }
-        .level-advanced .course-level { 
-            background-color: var(--level-advanced); 
-            color: var(--text-light); /* Melhor contraste no vermelho escuro */
-        }
-
 
         /* --- Responsividade --- */
         @media (max-width: 768px) {
             .header .container { flex-direction: column; }
             .nav-menu { margin-top: 15px; }
-            .nav-menu ul { flex-direction: column; text-align: center; }
-            .nav-menu li { margin: 10px 0; }
+            .nav-menu ul { display: none; }
             
-            #tools-hero h1 { font-size: 2.5rem; }
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
+            #hero-trainings h1 { font-size: 2.5rem; }
+            #hero-trainings p { font-size: 1rem; }
+            section { padding: 40px 0; }
+            .course-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -352,45 +310,144 @@
 
     <main>
 
-        <section id="tools-hero">
+        <section id="hero-trainings">
             <div class="container">
-                <h1>Cursos Gratuitos em <span class="text-primary-blue">Segurança Cibernética</span></h1>
-                <p>Capacite-se com trilhas de conhecimento para todos os níveis, do iniciante ao avançado, e impulsione sua carreira. </p>
+                <h1>Trilha de Aprendizado Gratuita em <span class="text-primary-blue">Cibersegurança</span></h1>
+                <p>
+                    Seu ponto de partida no mundo da segurança digital. Selecionamos os melhores cursos gratuitos e abertos do mercado, organizados em uma sequência lógica para construir sua carreira do zero.
+                </p>
+                <i class="fas fa-lock" style="font-size: 2rem; color: var(--light-blue);"></i>
             </div>
         </section>
-        
-        <section id="tools-list">
+
+        <section id="course-list">
             <div class="container">
-                <h2 class="section-title">Trilhas de Conhecimento</h2>
-                <p class="section-subtitle">Aprenda sobre segurança, ética hacker e emulação de adversários com o conteúdo selecionado pela Fluydez Cyber.</p>
+                <h2>Os Melhores Cursos <span class="text-primary-blue">Gratuitos</span></h2>
+                <br>
+                <div class="level-tag">NÍVEL INICIANTE</div>
 
-                <div class="tools-grid">
+                <div class="course-grid">
                     
-                    <div class="tool-card level-beginner">
-                        <span class="tool-icon">💡</span>
-                        <span class="course-level">Iniciante</span>
+                    <div class="course-card">
+                        <span class="star-rating" title="Programa Completo: Nivelamento ao Avançado">⭐</span>
+                        <h3>Programa Completo de Formação em Cibersegurança</h3>
+                        <span class="source">Projeto Hackers do Bem</span>
+                        <p class="details">
+                            Trilha de aprendizado completa e gratuita, desde o nivelamento até o avançado, oferecida pelo Projeto Hackers do Bem. Ótimo recurso de longo prazo para sua carreira.
+                        </p>
+                        <a href="https://hackersdobem.org.br/" target="_blank" class="cta-link">Acessar Trilha</a>
+                    </div>
+
+                    <div class="course-card">
+                        <span class="star-rating" title="Curso Mais Importante para Início de Carreira">⭐</span>
+                        <h3>Google Cybersecurity Professional Certificate</h3>
+                        <span class="source">Google (via Coursera)</span>
+                        <p class="details">
+                            Construa sua base para a carreira em Cibersegurança. Aprenda sobre redes, ameaças, ferramentas Linux e Python, e a trabalhar como Analista de Segurança.
+                        </p>
+                        <a href="https://www.coursera.org/professional-certificates/google-cybersecurity" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+
+                    <div class="course-card">
+                        <span class="star-rating" title="Essencial para Entender Redes e Base da Segurança">⭐</span>
+                        <h3>Introduction to Cybersecurity (Introdução)</h3>
+                        <span class="source">Cisco Networking Academy</span>
+                        <p class="details">
+                            Foco em Redes e Fundamentos. Entenda o papel da Cibersegurança, o panorama de ameaças e os princípios de proteção de dados e sistemas. (Duração: ~6h).
+                        </p>
+                        <a href="https://www.netacad.com/pt/courses/introduction-to-cybersecurity" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <h3>Cybersecurity for Everyone</h3>
+                        <span class="source">University of Maryland (via Coursera)</span>
+                        <p class="details">
+                            Visão não técnica essencial: Política, Governança, Risco, Leis e Regulamentações. Essencial para entender o contexto de compliance e negócios.
+                        </p>
+                        <a href="https://www.coursera.org/learn/cybersecurity-for-everyone" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <span class="star-rating" title="Fundamental para Cloud e Compliance Microsoft">⭐</span>
                         <h3>Fundamentos de Segurança e Conformidade (SC-900)</h3>
-                        <p>Princípios de segurança, conformidade e identidade (IAM) na Microsoft Cloud. Essencial para todos os profissionais de SI.</p>
-                        <a href="#" target="_blank" class="access-button">Acessar Curso</a>
+                        <span class="source">Microsoft (via Microsoft Learn)</span>
+                        <p class="details">
+                            Princípios de segurança, compliance e identidade (IAM) na Microsoft Cloud (Azure/Microsoft 365). Essencial para todos os profissionais de SI.
+                        </p>
+                        <a href="#" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>Fundamentos da Ciber-segurança</h3>
+                        <span class="source">IBM SkillsBuild</span>
+                        <p class="details">
+                            Curso abrangente da IBM, cobrindo conceitos de segurança, ameaças comuns e introdução ao gerenciamento de segurança da informação (Duração: ~7.5h).
+                        </p>
+                        <a href="https://skillsbuild.org/pt-br/college-students/course-catalog/cybersecurity-fundamentals" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>Fundamentos da Segurança Virtual</h3>
+                        <span class="source">Palo Alto Networks</span>
+                        <p class="details">
+                            Excelente curso com foco em Rede, Segurança na Nuvem (Cloud Security) e as operações de um Centro de Operações de Segurança (SOC).
+                        </p>
+                        <a href="https://www.paloaltonetworks.com.br/cyberpedia/free-cybersecurity-education-courses" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>Certificação Analista SOC Fundamentos</h3>
+                        <span class="source">IBSEC</span>
+                        <p class="details">
+                            Foco prático e na carreira de SOC (Security Operations Center). Aprenda as ferramentas e processos essenciais de monitoramento e resposta a incidentes.
+                        </p>
+                        <a href="https://ibsec.com.br/certificacao-ibsec-analista-soc-fundamentos/" target="_blank" class="cta-link">Acessar Treinamento</a>
                     </div>
                     
-                    <div class="tool-card level-intermediate">
-                        <span class="tool-icon">🛠️</span>
-                        <span class="course-level">Intermediário</span>
-                        <h3>Ethical Hacking com Open Source Tools</h3>
-                        <p>Treinamento prático (hands-on) com ferramentas como Kali Linux, Wireshark e OpenVAS, focando em testes de segurança.</p>
-                        <a href="#" target="_blank" class="access-button">Acessar Curso</a>
+                    <div class="course-card">
+                        <h3>SQL Injection Attacks (Módulo Gratuito)</h3>
+                        <span class="source">EC-Council</span>
+                        <p class="details">
+                            Introdução ao Hacking Ético: Foco em Exploração e Teste de Penetração. Conheça a falha de SQL Injection e como ela é explorada (Foco no Kali Linux).
+                        </p>
+                        <a href="https://www.eccouncil.org/cybersecurity-exchange/cyber-novice/free-cybersecurity-courses-beginners/" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <h3>Treinamento Gratuito sobre Cibersegurança</h3>
+                        <span class="source">ESET</span>
+                        <p class="details">
+                            Ideal para Conscientização: Foco em ameaças como Phishing, Engenharia Social, senhas seguras e segurança no dia a dia.
+                        </p>
+                        <a href="https://www.eset.com/br/antivirus-corporativo/treinamento-ciberseguranca/" target="_blank" class="cta-link">Acessar Treinamento</a>
                     </div>
 
-                    <div class="tool-card level-advanced">
-                        <span class="tool-icon">🔴</span>
-                        <span class="course-level">Avançado</span>
-                        <h3>Red Team Adversary Emulation (Caldera)</h3>
-                        <p>Domine o framework MITRE ATT&CK e a automação de emulação de ameaças para operações avançadas de Red Team. </p>
-                        <a href="#" target="_blank" class="access-button">Acessar Curso</a>
+                    <div class="course-card">
+                        <h3>Segurança Cibernética: Controles 1 a 6 do CIS</h3>
+                        <span class="source">EV.G (Escola Virtual Gov)</span>
+                        <p class="details">
+                            Curso focado em **Hardening e Controles práticos**. Aprenda a implementar os primeiros 6 Controles de Segurança Críticos do CIS (Center for Internet Security).
+                        </p>
+                        <a href="https://www.escolavirtual.gov.br/curso/1073" target="_blank" class="cta-link">Acessar Treinamento</a>
                     </div>
 
+                    <div class="course-card">
+                        <h3>Segurança Digital (Visão Executiva)</h3>
+                        <span class="source">FGV Educação Executiva</span>
+                        <p class="details">
+                            Visão estratégica sobre o cenário de Perigos Virtuais, aspectos legais, uso da Criptografia e a gestão de segurança dentro de uma organização.
+                        </p>
+                        <a href="https://educacao-executiva.fgv.br/cursos/online/curta-media-duracao-online/seguranca-digital" target="_blank" class="cta-link">Acessar Treinamento</a>
+                    </div>
+                    
                 </div>
+            </div>
+        </section>
+
+        <section id="disclaimer">
+            <div class="container">
+                <p>⚠️ **Aviso de Afiliação:** A Fluydez Cyber organiza estes links como um serviço público de apoio à comunidade. Não temos afiliação direta com os provedores dos cursos. A gratuidade e o conteúdo são de responsabilidade exclusiva das instituições parceiras.</p>
+                <p>Sugerimos que verifique os requisitos de cadastro e a modalidade de gratuidade (auditoria gratuita ou curso completo) no site de cada provedor.</p>
             </div>
         </section>
 
