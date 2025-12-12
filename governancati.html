@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governança TI e ISO 27001 | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Replicando o padrão */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            /* Cores de Destaque adicionais */
+            --color-green: #10B981;
+            --color-blue-dark: #3B82F6;
+            --color-yellow: #F59E0B;
+            --color-pink: #EC4899;
+            --color-purple: #A855F7;
+            --color-amber: #FBBF24;
+            --color-cyan: #06B6D4;
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        /* Classes de Seção */
+        .main-section {
+             background-color: var(--dark-bg);
+        }
+        .highlight-section {
+            background-color: var(--highlight-bg); 
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Estilo para destaque da cor azul */
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+        
+        /* Estilo para o botão de CTA (Call to Action) */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Estilo para a seção CTA no geral */
+        .cta-section {
+            background-color: var(--highlight-bg);
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 0;
+            border-top: 1px solid var(--card-bg);
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos do Logo (Texto + Imagem) */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex; 
+            align-items: center;
+            gap: 8px; /* Espaço entre o logo e o texto */
+        }
+        
+        /* Estilo da Imagem do Logo */
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        /* O link "Serviços" será o ativo */
+        .nav-menu a.active { 
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé (Mínimo, mas replicado para consistência) --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: var(--light-blue);
+        }
+
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA DE SERVIÇOS/GOVERNANÇA --- */
+        
+        /* Hero Section com Imagem de Fundo e Transparência de 90% */
+        #services-hero {
+            padding: 100px 0 60px 0;
+            text-align: center;
+            color: var(--text-light);
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+            
+            /* APLICAÇÃO DA IMAGEM DE FUNDO COM OVERLAY ESCURO (90% OPACIDADE) */
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                              url('Imagens/cadeados.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #services-hero h1 {
+            font-size: 3.5rem;
+            color: var(--text-light);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px; /* Adicionado para separar do subtitle */
+        }
+
+        #services-hero .hero-subtitle { /* Utiliza a classe já definida no HTML */
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 20px auto 0 auto;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        
+        /* --- Estilos para os Cards de Proposta de Valor e Aderência --- */
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 30px; 
+            margin-top: 50px; /* Aumentado um pouco para espaçamento */
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .value-prop-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-blue); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .value-prop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-prop-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .value-prop-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Estilo específico para o card de Aderência */
+        .adherence-card {
+            border-left-color: var(--color-green); 
+        }
+
+        .adherence-card h3 {
+            color: var(--color-green); 
+        }
+
+        /* Adherence card list cleanup */
+        .adherence-card ul {
+            list-style: none; 
+            padding-left: 0; 
+            color: var(--text-secondary);
+        }
+        .adherence-card ul li {
+            margin-bottom: 15px; 
+            display: flex;
+            align-items: flex-start;
+        }
+        .adherence-card ul li span:first-child { /* O checkmark */
+            color: var(--color-green); 
+            margin-right: 10px; 
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .adherence-card ul li strong {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        /* --- Fim dos estilos para os Cards de Proposta de Valor --- */
+        
+        /* --- Estilos para os blocos de GRC/Operacional (grc-item) --- */
+        .grc-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-blue); /* Padrão, mas modificado abaixo */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .grc-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            background-color: var(--primary-blue); /* Padrão, mas modificado abaixo */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            min-width: 30px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+        }
+        .grc-info h3 {
+            font-size: 1.3rem;
+            margin-top: -5px;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+        .grc-info p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        .case-result {
+            font-size: 0.75rem; /* 12px */
+            color: var(--color-green);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Modificadores de Cores Operacional */
+        .grc-item-blue { border-left-color: var(--color-blue-dark); }
+        .grc-number-blue { background-color: var(--color-blue-dark); }
+        .grc-item-yellow { border-left-color: var(--color-yellow); }
+        .grc-number-yellow { background-color: var(--color-yellow); }
+        .grc-item-pink { border-left-color: var(--color-pink); }
+        .grc-number-pink { background-color: var(--color-pink); }
+        
+        /* Estilo para a caixa de destaque de resultado operacional */
+        .result-highlight-box {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px; 
+            text-align: center;
+        }
+        .result-highlight-box h3 {
+             font-size: 20px; 
+             font-weight: 600; 
+             color: var(--text-light); 
+             margin-bottom: 15px;
+        }
+        .result-highlight-box p {
+             font-size: 14px; 
+             color: var(--text-secondary);
+        }
+        /* --- Fim dos estilos para GRC/Operacional --- */
+
+
+        /* --- Estilos para Modernização (services-grid) --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: left;
+        }
+        .card-service {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 5px solid var(--primary-blue); /* Default */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .card-service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .icon-badge {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .card-service h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        .card-service p {
+            color: var(--text-secondary);
+        }
+        /* Modificadores de Cores Modernização */
+        .card-purple { border-top-color: var(--color-purple); }
+        .card-yellow { border-top-color: var(--color-amber); }
+        .card-cyan { border-top-color: var(--color-cyan); }
+        .card-green { border-top-color: var(--color-green); }
+
+        /* Estilo para a citação de destaque */
+        .quote-highlight-box {
+            background-color: #007BFF1A; /* Primary Blue com 10% de opacidade */
+            padding: 25px; 
+            border-radius: 8px; 
+            margin-top: 50px; 
+            max-width: 900px; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        .quote-highlight-box p {
+            color: var(--primary-blue); 
+            font-weight: 500;
+        }
+        /* --- Fim dos estilos para Modernização --- */
+
+
+        /* --- Estilos GRC e Normativos (grc-layout, normative-highlight) --- */
+        .grc-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Coluna para itens e coluna para destaque */
+            gap: 40px;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
+        .normative-highlight {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-blue);
+        }
+        .normative-highlight h3 {
+            color: var(--primary-blue);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .normative-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .norm-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 10px;
+            border: 1px solid var(--highlight-bg);
+            border-radius: 8px;
+            background-color: var(--highlight-bg);
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        .norm-item:hover {
+             background-color: #252528;
+        }
+        .norm-item .emoji {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        .norm-item .title {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .norm-item .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        /* --- Fim dos estilos GRC e Normativos --- */
+        
+        /* Estilos para a seção Síntese/Requisitos */
+        .requisite-list {
+            list-style: disc; 
+            padding-left: 20px; 
+            color: var(--text-secondary); 
+            margin-top: 10px; 
+            font-size: 15px;
+        }
+        .requisite-list strong {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        /* Estilo para a CTA final */
+        .final-cta-button {
+            background-color: var(--primary-blue); 
+            color: var(--dark-bg); 
+            padding: 15px 40px; 
+            font-size: 18px;
+        }
+        .final-cta-button:hover {
+             background-color: var(--light-blue);
+             color: var(--text-light);
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 1024px) {
+             .grc-layout {
+                grid-template-columns: 1fr; /* Coluna única em telas médias/pequenas */
+            }
+        }
+        @media (max-width: 900px) {
+            .value-prop-grid {
+                grid-template-columns: 1fr; /* Coluna única */
+                max-width: 500px;
+            }
+        }
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+
+            #services-hero h1 { font-size: 2.5rem; }
+            #services-hero .hero-subtitle { font-size: 1rem; }
+            
+            .section-title { font-size: 2rem; }
+            .grc-info h3 { font-size: 1.2rem; }
+            .cta-section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html" class="active">Serviços</a></li> 
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="services-hero"> <div class="container">
+                <h1>Governança de TI e ISO 27001</h1> <h2 class="hero-subtitle">Especialista em Governança, GRC e Inovação em Processos</h2>
+                
+                <div class="value-prop-grid">
+                    <div class="value-prop-card">
+                        <h3>🎯 Proposta de Valor</h3>
+                        <p>
+                            Modernizar a Governança de TI através da <strong>automação</strong> e de uma visão <strong>Data-Driven</strong>, garantindo eficiência operacional e conformidade regulatória com base em frameworks sólidos.
+                        </p>
+                    </div>
+                    <div class="value-prop-card adherence-card"> 
+                        <h3>✅ Aderência aos Requisitos</h3>
+                        <ul>
+                            <li>
+                                <span>✔</span>
+                                <span><strong>+18 Anos de Experiência:</strong> Atuação em Bancos, Fintechs e Telecom.</span>
+                            </li>
+                            <li>
+                                <span>✔</span>
+                                <span><strong>Foco:</strong> Protagonismo na modernização, automação e democratização da informação.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <a href="#operacional" class="cta-button"> 
+                        Ver Governança Operacional &darr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="operacional" class="main-section"> <div class="container" style="text-align: center;">
+                <h2 class="section-title">Governança Operacional e ITSM (ITIL)</h2>
+                <p class="section-subtitle" style="margin-bottom: 40px;">
+                    Projetar, Implementar e Otimizar Processos com foco em resultados mensuráveis.
+                </p>
+                
+                <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                    <div class="grc-item grc-item-blue"> <div class="grc-number grc-number-blue">1</div> <div class="grc-info">
+                            <h3>Gestão de Serviços (ITIL & COBIT)</h3>
+                            <p>
+                                Experiência em projetar processos de ciclo de vida completo (Incidentes, Problemas, Mudanças, Ativos). Estruturei departamentos do zero (ex: Banco Pine) alinhando ITIL ao COBIT. Vivência sólida em ServiceNow (Catálogos, SLAs).
+                            </p>
+                            <p class="case-result">* Ex: Redução MTTR de 80% (Pine)</p> </div>
+                    </div>
+                    
+                    <div class="grc-item grc-item-yellow"> <div class="grc-number grc-number-yellow">2</div> <div class="grc-info">
+                            <h3>Gestão de Incidentes e Problemas</h3>
+                            <p>
+                                Coordenação de incidentes críticos e liderança em Análise de Causa-Raiz (RCA). Foco em eliminar a recorrência e restaurar serviços rapidamente.
+                            </p>
+                            <p class="case-result">* Ex: Redução Custos Operacionais de 30% (Itaú)</p> </div>
+                    </div>
+
+                    <div class="grc-item grc-item-pink"> <div class="grc-number grc-number-pink">3</div> <div class="grc-info">
+                            <h3>Gestão de Mudanças (GMUD)</h3>
+                            <p>
+                                Supervisão rigorosa do ciclo de mudanças para garantir segurança, controle e mitigação de riscos, assegurando a estabilidade do ambiente produtivo.
+                            </p>
+                            <p class="case-result">* Ex: Redução de 70% em Não Conformidades (Semantix)</p> </div>
+                    </div>
+
+                    <div class="result-highlight-box"> <h3>Resultados de Eficiência Operacional Comprovados</h3>
+                        <p>
+                            Impacto direto na redução de tempo de resposta e custos operacionais (MTTR, Custos, Riscos, Resiliência).
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="automacao" class="highlight-section"> <div class="container" style="text-align: center;">
+                <h2 class="section-title">Modernização da Governança</h2>
+                <p style="font-size: 18px; color: var(--primary-blue); font-weight: 600; margin-bottom: 40px;">Automação, Inovação e Decisão Orientada a Dados</p>
+
+                <div class="services-grid"> <div class="card-service card-purple"> <span class="icon-badge">🤖</span>
+                        <h3>Automação e Eficiência</h3>
+                        <p>
+                            Conhecimento avançado em ferramentas de automação para reduzir intervenções manuais. Integração de <strong>Jira, Confluence, Planner e Teams</strong> para gestão colaborativa ágil.
+                        </p>
+                    </div>
+
+                    <div class="card-service card-yellow"> <span class="icon-badge">📊</span>
+                        <h3>Visão Data-Driven</h3>
+                        <p>
+                            Transformação de dados em insights. Expertise em <strong>Excel, Power BI e Power Query</strong> para definição e análise de KPIs/KRIs. Elaboração de relatórios executivos de alto impacto.
+                        </p>
+                    </div>
+
+                    <div class="card-service card-cyan"> <span class="icon-badge">🚀</span>
+                        <h3>Inovação & IA</h3>
+                        <p>
+                            Vivência em projetos de inovação tecnológica. Aplicação de conhecimentos em <strong>Governança de IA (ISO 42001)</strong> para modernizar processos de Governança de TI.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="quote-highlight-box"> <p>
+                        "Minha abordagem é democratizar a informação: dados corretos, no momento certo, para a decisão certa."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="grc" class="main-section"> <div class="container">
+                <h2 class="section-title">GRC, Riscos e Conformidade Estratégica</h2>
+                
+                <div class="grc-layout"> <div>
+                        <div class="grc-item grc-item-green"> <div class="grc-number grc-number-green">1</div>
+                            <div class="grc-info">
+                                <h3>Governança e Conformidade</h3>
+                                <p>
+                                    Definição e manutenção de políticas alinhadas a <strong>ISO 27001, NIST CSF, LGPD</strong> e regulações setoriais (BACEN 4.658). Histórico de <strong>redução de 70%</strong> em não conformidades (Case Semantix).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grc-item grc-item-blue">
+                            <div class="grc-number grc-number-blue">2</div>
+                            <div class="grc-info">
+                                <h3>Gestão de Riscos (Protagonista)</h3>
+                                <p>
+                                    Atuação protagonista na modernização da Governança. Condução de iniciativas focadas em eficiência operacional e democratização das informações de risco.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grc-item grc-item-yellow"> <div class="grc-number grc-number-yellow">3</div>
+                            <div class="grc-info">
+                                <h3>Continuidade e Resiliência</h3>
+                                <p>
+                                    Liderança na Gestão de SLAs e monitoramento de níveis de serviço. Elevação da resiliência operacional em <strong>30%</strong> via gestão de BCP/DRP (Case PagBank).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="normative-highlight"> <h3>Destaques Normativos</h3>
+                        <div class="normative-grid"> <div class="norm-item">
+                                <span class="emoji">🛡️</span>
+                                <span class="title">ISO 27001</span>
+                                <span class="subtitle">Lead Auditor</span>
+                            </div>
+                            <div class="norm-item">
+                                <span class="emoji">⚖️</span>
+                                <span class="title">LGPD/GDPR</span>
+                                <span class="subtitle">Privacidade</span>
+                            </div>
+                            <div class="norm-item">
+                                <span class="emoji">📋</span>
+                                <span class="title">NIST CSF</span>
+                                <span class="subtitle">Framework</span>
+                            </div>
+                            <div class="norm-item">
+                                <span class="emoji">🤖</span>
+                                <span class="title">ISO 42001</span>
+                                <span class="subtitle">IA Governance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="sintese" class="highlight-section"> <div class="container" style="text-align: center;">
+                <h2 class="section-title">Alinhamento Total com a Oportunidade</h2>
+                <p class="section-subtitle" style="margin-bottom: 40px;">Combinação de solidez normativa com Governança 4.0</p>
+                
+                <div style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left;">
+                    
+                    <div class="card-service card-green"> <h3>Requisitos Fundamentais (Comprovados)</h3>
+                        <ul class="requisite-list"> <li><strong>ITSM/ITIL & Processos:</strong> Domínio na otimização e implementação.</li>
+                            <li><strong>Data-Driven:</strong> Power BI, Power Query e análise de KPIs.</li>
+                            <li><strong>GRC/ISO:</strong> ISO 27001 Lead Auditor e Experiência em LGPD.</li>
+                            <li><strong>Automação:</strong> Experiência sólida na modernização de processos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-service card-blue"> <h3>Diferenciais (Valor Adicional)</h3>
+                        <ul class="requisite-list"> <li><strong>ServiceNow:</strong> Vivência em catálogos, SLAs e CMDB.</li>
+                            <li><strong>BPMN/Bizagi:</strong> Conhecimento em modelagem avançada.</li>
+                            <li><strong>Lógica/PowerShell:</strong> Habilidade para automação avançada.</li>
+                            <li><strong>ISO 42001:</strong> Visão de Inovação e Inteligência Artificial.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px;">
+                    <h3 style="font-size: 24px; color: var(--text-light); margin-bottom: 25px;">Pronto para iniciar a atuação de forma protagonista.</h3>
+                    <a href="mailto:robertofluypro@gmail.com" class="cta-button final-cta-button">
+                        Entrar em Contato
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="#services-hero" class="text-primary-blue">Início</a> |
+                <a href="#operacional" class="text-primary-blue">ITSM & Ops</a> |
+                <a href="#automacao" class="text-primary-blue">Modernização</a> |
+                <a href="#grc" class="text-primary-blue">GRC & Riscos</a> |
+                <a href="#sintese" class="text-primary-blue">Síntese</a>
+            </p>
+            <p>&copy; 2025 José Roberto Jesus. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

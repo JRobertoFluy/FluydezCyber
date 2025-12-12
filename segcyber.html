@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Gratuitos | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Replicando o padrão */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            /* Cores de Destaque adicionais (do primeiro bloco) */
+            --color-green: #10B981;
+            --color-blue-dark: #3B82F6;
+            --color-yellow: #F59E0B;
+            --color-pink: #EC4899;
+            --color-purple: #A855F7;
+            --color-amber: #FBBF24;
+            --color-cyan: #06B6D4;
+
+            /* --- Cores dos Níveis (Semáforo) - do segundo bloco, mantidas por serem específicas desta página --- */
+            --level-beginner: #28A745; /* Verde */
+            --level-intermediate: #FFC107; /* Amarelo */
+            --level-advanced: #DC3545; /* Vermelho */
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Estilo para destaque da cor azul */
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos do Logo (Texto + Imagem) */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Estilo da Imagem do Logo */
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        /* O link "Treinamentos" é o ativo na página de Cursos */
+        .nav-menu a.active { 
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: var(--light-blue);
+        }
+
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA CURSOS --- */
+        
+        /* Hero Section com Imagem de Fundo (escudo.png) */
+        #tools-hero {
+            padding: 120px 0 80px 0;
+            text-align: center;
+            color: var(--text-light);
+            /* APLICAÇÃO DA IMAGEM DE FUNDO COM OVERLAY ESCURO (90% OPACIDADE) */
+            /* Imagem de Fundo Corrigida para a URL da imagem de segurança genérica (cadeados.jpeg) ou um caminho real */
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                              url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop'); /* Usando Imagem Genérica como Placeholder */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        #tools-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #tools-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Grid de Ferramentas (Layout responsivo com no mínimo 350px) */
+        #tools-list {
+            background-color: var(--highlight-bg);
+            padding: 80px 0;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        /* Card de Curso (Baseado em tool-card) */
+        .tool-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 5px solid var(--primary-blue); /* Padrão, será sobrescrito pelo nível */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            /* box-shadow será sobrescrito pelo nível */
+        }
+        
+        .tool-card h3 {
+            font-size: 1.4rem; /* Um pouco menor para melhor ajuste */
+            color: var(--text-light); /* Cor neutra para o título */
+            margin-bottom: 15px;
+        }
+        
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+        
+        .access-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .access-button:hover {
+            background-color: var(--light-blue);
+            transform: scale(1.05);
+        }
+        
+        /* Ícone (simulação com emoji, idealmente seria um SVG ou Font Awesome) */
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--primary-blue);
+        }
+
+        /* --- Estilos do Semáforo (Cores de Nível) --- */
+        
+        .course-level {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--dark-bg);
+        }
+
+        /* Iniciante (Green) */
+        .level-beginner {
+            border-top: 5px solid var(--level-beginner);
+        }
+        .level-beginner:hover {
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3); 
+        }
+        .level-beginner .course-level { 
+            background-color: var(--level-beginner); 
+            color: var(--dark-bg); /* Garante contraste */
+        }
+
+        /* Intermediário (Yellow) */
+        .level-intermediate {
+            border-top: 5px solid var(--level-intermediate);
+        }
+        .level-intermediate:hover {
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3); 
+        }
+        .level-intermediate .course-level { 
+            background-color: var(--level-intermediate); 
+            color: var(--dark-bg); /* Garante contraste */
+        }
+
+        /* Avançado (Red) */
+        .level-advanced {
+            border-top: 5px solid var(--level-advanced);
+        }
+        .level-advanced:hover {
+            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3); 
+        }
+        .level-advanced .course-level { 
+            background-color: var(--level-advanced); 
+            color: var(--text-light); /* Melhor contraste no vermelho escuro */
+        }
+
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+            
+            #tools-hero h1 { font-size: 2.5rem; }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html" class="active">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="tools-hero">
+            <div class="container">
+                <h1>Cursos Gratuitos em <span class="text-primary-blue">Segurança Cibernética</span></h1>
+                <p>Capacite-se com trilhas de conhecimento para todos os níveis, do iniciante ao avançado, e impulsione sua carreira. </p>
+            </div>
+        </section>
+        
+        <section id="tools-list">
+            <div class="container">
+                <h2 class="section-title">Trilhas de Conhecimento</h2>
+                <p class="section-subtitle">Aprenda sobre segurança, ética hacker e emulação de adversários com o conteúdo selecionado pela Fluydez Cyber.</p>
+
+                <div class="tools-grid">
+                    
+                    <div class="tool-card level-beginner">
+                        <span class="tool-icon">💡</span>
+                        <span class="course-level">Iniciante</span>
+                        <h3>Fundamentos de Segurança e Conformidade (SC-900)</h3>
+                        <p>Princípios de segurança, conformidade e identidade (IAM) na Microsoft Cloud. Essencial para todos os profissionais de SI.</p>
+                        <a href="#" target="_blank" class="access-button">Acessar Curso</a>
+                    </div>
+                    
+                    <div class="tool-card level-intermediate">
+                        <span class="tool-icon">🛠️</span>
+                        <span class="course-level">Intermediário</span>
+                        <h3>Ethical Hacking com Open Source Tools</h3>
+                        <p>Treinamento prático (hands-on) com ferramentas como Kali Linux, Wireshark e OpenVAS, focando em testes de segurança.</p>
+                        <a href="#" target="_blank" class="access-button">Acessar Curso</a>
+                    </div>
+
+                    <div class="tool-card level-advanced">
+                        <span class="tool-icon">🔴</span>
+                        <span class="course-level">Avançado</span>
+                        <h3>Red Team Adversary Emulation (Caldera)</h3>
+                        <p>Domine o framework MITRE ATT&CK e a automação de emulação de ameaças para operações avançadas de Red Team. </p>
+                        <a href="#" target="_blank" class="access-button">Acessar Curso</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="ferramentas.html" class="text-primary-blue" style="color: var(--primary-blue);">Ferramentas</a> |
+                <a href="treinamentos.html" class="text-primary-blue" style="color: var(--primary-blue);">Treinamentos</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
