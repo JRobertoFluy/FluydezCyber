@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Segurança da Informação | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"> 
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Padrão */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF; /* Destaque principal para Segurança */
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            --star-color: #FFD700;
+            --success-green: #28a745;
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header (Padrão) --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé (Padrão) --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- SEÇÃO POLÍTICA PSI --- */
+        #policy-hero {
+            /* Mantendo a referência ao central.jpeg com overlay */
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('imagens/imagens/site_publishTools.png') no-repeat center center/cover;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue); /* Destaque azul para Segurança */
+        }
+
+        #policy-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        #policy-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+        
+        #policy-content {
+            padding: 80px 0;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        #policy-content h2 {
+            font-size: 2rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 5px;
+            color: var(--primary-blue); /* Destaque em azul nos títulos */
+        }
+
+        #policy-content h3 {
+            font-size: 1.25rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        #policy-content p, #policy-content ul {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        #policy-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-left: 10px;
+        }
+
+        #policy-content ul li {
+            margin-bottom: 5px;
+        }
+        
+        /* Destaque para palavras-chave/tópicos principais */
+        #policy-content strong {
+            color: var(--text-light);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { display: none; }
+            
+            #policy-hero h1 { font-size: 2.5rem; }
+            #policy-hero p { font-size: 1rem; }
+            section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="policy-hero">
+            <div class="container">
+                <h1 style="color: var(--primary-blue);">POLÍTICA DE SEGURANÇA DA INFORMAÇÃO</h1>
+                <p>
+                    Fluydez Cibersegurança e Soluções Ltda
+                </p>
+                <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--primary-blue);"></i>
+            </div>
+        </section>
+
+        <section id="policy-content">
+            <div class="container">
+                
+                <h2>1. Objetivo</h2>
+                <p>
+                    Esta Política de Segurança da Informação estabelece diretrizes para proteger as informações sob responsabilidade da Fluydez Cibersegurança e Soluções Ltda, garantindo confidencialidade, integridade e disponibilidade, prevenindo acessos não autorizados, incidentes de segurança e uso indevido de informações.
+                </p>
+
+                <h2>2. Abrangência</h2>
+                <p>
+                    Aplica-se a todos os sócios, colaboradores, prestadores de serviço, parceiros e terceiros que tenham acesso às informações, sistemas, ativos ou ambientes tecnológicos da empresa, independentemente do meio ou formato.
+                </p>
+
+                <h2>3. Princípios da Segurança da Informação</h2>
+                <p>A Fluydez adota como fundamentos:</p>
+                <ul>
+                    <li><strong>Confidencialidade:</strong> acesso restrito às informações somente a pessoas autorizadas;</li>
+                    <li><strong>Integridade:</strong> proteção contra alteração, destruição ou uso indevido;</li>
+                    <li><strong>Disponibilidade:</strong> acesso à informação sempre que necessário e autorizado;</li>
+                    <li><strong>Responsabilidade:</strong> cada usuário é responsável pelo uso adequado das informações;</li>
+                    <li><strong>Prevenção e gestão de riscos:</strong> identificação, avaliação e tratamento contínuo de riscos.</li>
+                </ul>
+
+                <h2>4. Classificação da Informação</h2>
+                <p>
+                    As informações devem ser classificadas conforme seu nível de criticidade, considerando impacto legal, operacional, financeiro e reputacional. Informações confidenciais e sensíveis devem receber controles reforçados de proteção.
+                </p>
+
+                <h2>5. Controle de Acesso</h2>
+                <p>O acesso às informações e sistemas é concedido com base no princípio do menor privilégio e na necessidade de acesso, sendo:</p>
+                <ul>
+                    <li>pessoal e intransferível;</li>
+                    <li>protegido por mecanismos de autenticação adequados;</li>
+                    <li>revisto periodicamente, especialmente em mudanças de função ou desligamentos.</li>
+                </ul>
+
+                <h2>6. Uso Aceitável de Ativos</h2>
+                <p>Os ativos de informação, incluindo sistemas, redes, equipamentos, credenciais e dados, devem ser utilizados exclusivamente para fins profissionais e autorizados. É vedado:</p>
+                <ul>
+                    <li>uso para atividades ilegais ou não autorizadas;</li>
+                    <li>compartilhamento indevido de credenciais;</li>
+                    <li>instalação de softwares sem autorização.</li>
+                </ul>
+
+                <h2>7. Segurança Física e Ambiental</h2>
+                <p>
+                    A empresa adota medidas proporcionais para proteger ambientes físicos, documentos e equipamentos contra acesso não autorizado, perda, danos ou uso indevido, mesmo em contextos de trabalho remoto.
+                </p>
+
+                <h2>8. Segurança em Ambientes Digitais</h2>
+                <p>São adotadas medidas técnicas e organizacionais para proteção dos ambientes tecnológicos, incluindo:</p>
+                <ul>
+                    <li>controle de acessos e autenticação;</li>
+                    <li>atualização e correção de sistemas;</li>
+                    <li>proteção contra malware e ameaças cibernéticas;</li>
+                    <li>registro e monitoramento de eventos relevantes de segurança.</li>
+                </ul>
+
+                <h2>9. Gestão de Incidentes de Segurança</h2>
+                <p>A Fluydez mantém procedimentos para:</p>
+                <ul>
+                    <li>identificação e registro de incidentes de segurança da informação;</li>
+                    <li>contenção, análise e mitigação de impactos;</li>
+                    <li>comunicação adequada às partes interessadas e autoridades competentes, quando aplicável;</li>
+                    <li>aprendizado e melhoria contínua após incidentes.</li>
+                </ul>
+
+                <h2>10. Conformidade Legal e Contratual</h2>
+                <p>Todas as atividades devem estar em conformidade com:</p>
+                <ul>
+                    <li>legislação aplicável, incluindo a LGPD;</li>
+                    <li>contratos firmados com clientes e parceiros;</li>
+                    <li>normas técnicas e boas práticas de segurança da informação.</li>
+                </ul>
+
+                <h2>11. Conscientização e Treinamento</h2>
+                <p>
+                    A empresa promove ações de conscientização e capacitação para fortalecer a cultura de segurança da informação, garantindo que todos compreendam seus papéis e responsabilidades.
+                </p>
+
+                <h2>12. Responsabilidades</h2>
+                <p>Todos os usuários são responsáveis por:</p>
+                <ul>
+                    <li>proteger as informações às quais tenham acesso;</li>
+                    <li>reportar imediatamente qualquer incidente ou suspeita de violação;</li>
+                    <li>cumprir integralmente esta Política e demais normas internas.</li>
+                </ul>
+                <p>A alta direção é responsável por apoiar, revisar e garantir a efetividade desta Política.</p>
+
+                <h2>13. Violações e Sanções</h2>
+                <p>
+                    O descumprimento desta Política poderá resultar em medidas administrativas, contratuais e legais, conforme a gravidade da infração.
+                </p>
+
+                <h2>14. Revisão da Política</h2>
+                <p>
+                    Esta Política será revisada periodicamente ou sempre que houver mudanças relevantes no ambiente tecnológico, legal ou organizacional.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="ferramentas.html" class="text-primary-blue" style="color: var(--primary-blue);">Ferramentas</a> |
+                <a href="treinamentos.html" class="text-primary-blue" style="color: var(--primary-blue);">Treinamentos</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

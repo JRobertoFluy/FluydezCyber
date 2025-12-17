@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicações | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Replicando o padrão */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Estilo para destaque da cor azul */
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos do Logo (Texto + Imagem) */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Estilo da Imagem do Logo */
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA PUBLICAÇÕES --- */
+        
+        /* Hero Section com Imagem de Fundo (site_publishTools.png) */
+        #publications-hero {
+            padding: 120px 0 80px 0;
+            text-align: center;
+            color: var(--text-light);
+            /* APLICAÇÃO DA IMAGEM DE FUNDO COM OVERLAY ESCURO (90% OPACIDADE) */
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                              url('imagens/site_publishTools.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        #publications-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #publications-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        /* Grid de Publicações */
+        #publications-list {
+            background-color: var(--highlight-bg);
+        }
+        
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .publication-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .publication-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        
+        .publication-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1; /* Garante que o texto ocupe o espaço necessário */
+        }
+        
+        .read-more-link {
+            display: inline-block;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding-top: 10px;
+            border-top: 1px dotted rgba(0, 123, 255, 0.2);
+        }
+        
+        .read-more-link:hover {
+            color: var(--light-blue);
+        }
+        
+        /* Lista Secundária de Publicações (para os posts restantes) */
+        .secondary-list {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--card-bg);
+        }
+        
+        .secondary-list h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: left;
+            color: var(--text-light);
+        }
+        
+        .secondary-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .secondary-list li {
+            padding: 10px 0;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+        }
+        
+        .secondary-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .secondary-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .secondary-list a:hover {
+            color: var(--light-blue);
+        }
+
+        /* --- NOVO ESTILO: BOTÃO DE DOWNLOAD ÚNICO (Relevo Minimalista) --- */
+        .download-section {
+            text-align: center; /* Centraliza o botão */
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid var(--card-bg); /* Separador para destacar a seção */
+            border-bottom: 1px solid var(--card-bg); /* Adiciona uma borda inferior para destaque */
+            margin-bottom: 30px; /* Espaçamento após a seção de download */
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 12px 30px; /* Aumentado um pouco o padding para destaque */
+            background-color: var(--card-bg); /* Fundo escuro do card */
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem; /* Fonte um pouco maior */
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 123, 255, 0.3); /* Borda sutil */
+            
+            /* Efeito de Relevo/3D Minimalista */
+            box-shadow: 
+                inset 0 1px 3px rgba(255, 255, 255, 0.05), /* Sombra interna sutil para relevo */
+                0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra externa para profundidade */
+        }
+
+        .download-button:hover {
+            background-color: var(--primary-blue); /* Inverte as cores no hover */
+            color: var(--text-light);
+            transform: translateY(-2px); /* Efeito de elevação */
+            box-shadow: 
+                0 6px 12px rgba(0, 123, 255, 0.3), /* Sombra mais intensa no hover */
+                inset 0 1px 3px rgba(0, 0, 0, 0.2); /* Sombra interna para manter o 'relevo' sutil */
+        }
+        /* ----------------------------------------------------------------- */
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+            
+            #publications-hero h1 { font-size: 2.5rem; }
+            
+            .publications-grid {
+                grid-template-columns: 1fr;
+            }
+            .download-button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html" class="active">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="publications-hero">
+            <div class="container">
+                <h1>Insights sobre Cibersegurança e <span class="text-primary-blue">Desenvolvimento Profissional</span></h1>
+                <p>Acompanhe as últimas tendências, análises técnicas e o caminho de crescimento na carreira de segurança da informação, certificações e GRC.</p>
+            </div>
+        </section>
+        
+        <section id="publications-list">
+            <div class="container">
+                <h2 class="section-title">Desenvolvimento Profissional em Destaque</h2>
+                <p class="section-subtitle">Acesso rápido aos posts mais recentes sobre certificações, estudos e conquistas na área Cyber e GRC.</p>
+
+                <div class="publications-grid">
+                    
+                    <div class="publication-card">
+                        <div>
+                            <h3>🥳 Nova Conquista: Recebimento de Certificação</h3>
+                            <p>Compartilhando a alegria do recebimento de uma nova certificação que valida conhecimentos essenciais em nossa área de atuação. (LinkedIn Post)</p>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/jrobertojesus-cyber_gostaria-de-compartilhar-que-recebi-uma-nova-activity-7395110164850282496-tI86?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank" class="read-more-link">Ver Publicação Original »</a>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div>
+                            <h3>Atualização Técnica: Riscos de SI, IA e Gestão Integrada</h3>
+                            <p>Análise técnica sobre a intersecção de Segurança da Informação (SI), Privacidade (LGPD) e o gerenciamento de riscos da Inteligência Artificial. (LinkedIn Post)</p>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/jrobertojesus-cyber_riscos-si-privacidade-e-ia-com-gest%C3%A3o-integrada-activity-7389454292677476352-M79v?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank" class="read-more-link">Ver Publicação Original »</a>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div>
+                            <h3>✨ Reconhecimento: Compartilhando uma Nova Conquista Profissional</h3>
+                            <p>Um post sobre o reconhecimento de esforços dedicados à evolução contínua na cibersegurança e o impacto positivo no mercado. (LinkedIn Post)</p>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/jrobertojesus-cyber_gostaria-de-compartilhar-que-recebi-uma-nova-activity-7385101344539369472-86zI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank" class="read-more-link">Ver Publicação Original »</a>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div>
+                            <h3>🎯 Liderança: O Papel do Líder na Cibersegurança Moderna</h3>
+                            <p>Reflexões sobre a importância do desenvolvimento de liderança técnica e estratégica para enfrentar os desafios complexos do ambiente digital. (LinkedIn Post)</p>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/jrobertojesus-cyber_activity-7386027666522423296-l8GC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank" class="read-more-link">Ver Publicação Original »</a>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div>
+                            <h3>🎓 Certificação: Anúncio de Conclusão de Novo Treinamento</h3>
+                            <p>A celebração de mais um passo no aprimoramento profissional através da conclusão de um importante curso ou certificação. (LinkedIn Post)</p>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/jrobertojesus-cyber_certificaaexaeto-activity-7372425901055062016-PPek?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank" class="read-more-link">Ver Publicação Original »</a>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div>
+                            <h3>🙏 Novo Certificado: Gratidão e Próximos Passos</h3>
+                            <p>Recebimento de um novo certificado, expressando gratidão e delineando o impacto desse aprendizado no caminho profissional. (LinkedIn Post)</p>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/jrobertojesus-cyber_eu-recebi-um-novo-certificado-gratid%C3%A3o-aos-activity-7360752656421707777-7FtM?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank" class="read-more-link">Ver Publicação Original »</a>
+                    </div>
+                    
+                </div>
+                
+                <div class="download-section">
+						<a href="ferramentas.html" class="download-button">
+							Ferramentas Fluydez
+						</a>
+				</div>
+                
+                <div class="secondary-list">
+                    <h2>Insights Técnicos e Notícias Anteriores</h2>
+                    <ul>
+                        <li><a href="https://lnkd.in/dNZUjDZC" target="_blank">Novas Diretrizes de GRC e Resiliência Operacional (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7396248411890593794/" target="_blank">Análise de Incidentes Críticos e Recuperação (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_risco-kpmg-fraude-activity-7393702241225912320-kM02?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">Relatório de Risco, Fraude e KPMG (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_measuring-foreign-direct-investment-activity-7390565857162149888-e5Ia?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">Medição de Investimento Estrangeiro Direto e o Fator Cyber (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_billgates-activity-7389365952590712832-Q9v1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">Reflexões sobre Inovação em Segurança baseadas em Bill Gates (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_docker-para-windows-bloqueia-inje%C3%A7%C3%A3o-de-falsas-activity-7389362361884889088-J1m4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">Docker para Windows: Bloqueio de Falsas Injeções (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_novo-ataque-hacker-drena-mais-de-r-40-milh%C3%B5es-activity-7387335358771806208-ztPM?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">Alerta: Novo Ataque Hacker que Drena Mais de R$ 40 Milhões (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_ciberseguranaexa-cybersecurity-seguranaexadigital-activity-7385007805512003584-qIHZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">Tendências em Cibersegurança e Segurança Digital (LinkedIn)</a></li>
+                        <li><a href="https://lnkd.in/d5e7ZE77" target="_blank">Artigo sobre a Evolução das Normas de Segurança e Compliance (LinkedIn)</a></li>
+                        <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_nistcsf-ciberseguranaexa-cybersecurity-activity-7378430479647203328-yFQJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">NIST CSF e o Futuro da Segurança da Informação (LinkedIn)</a></li>
+                         <li><a href="https://www.linkedin.com/posts/jrobertojesus-cyber_nistcsf-cybersecurity-ciberseguranaexa-activity-7376703783516590082-XftN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI74zwBQq2E59axHyyLGfWfNcOH-WwBWWY" target="_blank">Análise aprofundada do Framework NIST CSF (LinkedIn)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

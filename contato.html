@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            --input-bg: #28282A; /* Cor de fundo para campos de formulário */
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos do Logo (Texto + Imagem) */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex; /* Permite alinhar o texto e a imagem */
+            align-items: center;
+            gap: 8px; /* Espaço entre o logo e o texto */
+        }
+        
+        /* Estilo da Imagem do Logo */
+        .logo-img {
+            height: 45px; /* Tamanho da imagem do logo (+50% de 30px) */
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA CONTATO --- */
+
+        /* Hero Section com Imagem de Fundo */
+        #contact-hero {
+            padding: 120px 0 80px 0;
+            text-align: center;
+            color: var(--text-light);
+            /* APLICAÇÃO DA IMAGEM DE FUNDO COM OVERLAY ESCURO (90% OPACIDADE) */
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                              url('Imagens/algoritimo.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        #contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #contact-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Seção de Formulário e Detalhes */
+        #contact-form-section {
+            background-color: var(--dark-bg);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Estilo do Formulário */
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--highlight-bg);
+            border-radius: 4px;
+            background-color: var(--input-bg);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .submit-button:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-1px);
+        }
+        
+        /* Detalhes de Contato */
+        .contact-details {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .contact-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .contact-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+        
+        .contact-details li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .contact-details li strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .contact-details a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details a:hover {
+            color: var(--light-blue);
+        }
+
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+
+            #contact-hero h1 { font-size: 2.5rem; }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+					<li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html" class="active">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="contact-hero">
+            <div class="container">
+                <h1>Fale Conosco e Comece a se <span class="text-primary-blue">Proteger</span></h1>
+                <p>Preencha o formulário abaixo ou utilize nossos canais de contato direto para iniciar uma conversa com nossos especialistas em segurança e compliance.</p>
+            </div>
+        </section>
+        
+        <section id="contact-form-section">
+            <div class="container">
+                <div class="contact-grid">
+                    
+                    <form class="contact-form" action="mailto:contato@fluydez.com.br" method="post" enctype="text/plain">
+                        <h2>Envie sua Solicitação</h2>
+                        
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="Nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo *</label>
+                            <input type="email" id="email" name="Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone">Telefone (Opcional)</label>
+                            <input type="tel" id="telefone" name="Telefone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="assunto">Assunto Principal *</label>
+                            <select id="assunto" name="Assunto" required>
+                                <option value="" disabled selected>Selecione um assunto</option>
+                                <option value="Ciberseguranca">Cibersegurança</option>
+                                <option value="GRC_ISO">Governança, Risco e ISO 27001</option>
+								<option value="IA">Inteligência Artificial</option>
+                                <option value="LGPD_Privacidade">Privacidade e Adequação LGPD</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Detalhes da Sua Necessidade *</label>
+                            <textarea id="mensagem" name="Mensagem" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">Enviar Solicitação</button>
+                        
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 15px;">* Ao clicar em Enviar, uma nova janela de e-mail será aberta em seu dispositivo para finalização da mensagem.</p>
+                    </form>
+                    
+                    <div class="contact-details">
+                        <h3>Informações de Contato</h3>
+                        <ul>
+                            <li>
+                                <strong>E-mail Direto</strong>
+                                <a href="mailto:contato@fluydez.com.br">contato@fluydez.com.br</a>
+                            </li>
+                            <li>
+                                <strong>Telefone Comercial</strong>
+                                <a href="tel:+5511999998888">+55 (11) 99999-8888</a>
+                            </li>
+                            <li>
+                                <strong>Localização Principal</strong>
+                                <p>Tucuruvi<br>São Paulo, SP - Brasil</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

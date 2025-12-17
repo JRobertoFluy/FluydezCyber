@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Risco PRO | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+    <style>
+        /* --- DESIGN SYSTEM: Cores Fluydez Cyber (Dark Mode) --- */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            --color-error: #e53935; /* Cor para inconsistências */
+            --color-success: #4CAF50;
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px; /* Aumentado para acomodar gráficos e tabela */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 40px 0;
+        }
+
+        /* Estilo para destaque da cor azul */
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA MATRIZ PRO --- */
+        
+        /* Hero Section com Imagem de Fundo (cadeados.jpeg) */
+        #risk-hero {
+            padding: 120px 0 80px 0;
+            text-align: center;
+            color: var(--text-light);
+            /* APLICAÇÃO DA IMAGEM DE FUNDO COM OVERLAY ESCURO (90% OPACIDADE) */
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                              url('cadeados.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        #risk-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--text-light); /* Corrigindo cor do h1 */
+        }
+
+        #risk-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        /* Estilos do App Container */
+        #avaliacao-section .container {
+            background: var(--highlight-bg); /* Fundo da aplicação PRO */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--card-bg);
+        }
+        
+        /* Container Secundário (Revisão) */
+        #revisao-section .container {
+            background: var(--highlight-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--card-bg);
+            margin-top: 40px;
+        }
+
+        .section {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border-left: 6px solid var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- GRID LAYOUTS --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-main { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; } 
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; }
+
+        /* --- CAMPOS DE FORMULÁRIO --- */
+        label { 
+            font-weight: 500; 
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--highlight-bg);
+            margin-top: 0;
+            margin-bottom: 10px;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+        }
+
+        textarea { min-height: 80px; }
+        
+        /* Validação Visual (Requisito 4) */
+        input.invalid, select.invalid, textarea.invalid {
+            border-color: var(--color-error) !important;
+            box-shadow: 0 0 5px rgba(229, 57, 53, 0.5);
+        }
+
+        /* Feedback Visual (Requisito 4) */
+        .feedback-msg {
+            color: var(--color-error);
+            font-size: 0.85rem;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        
+        /* Checkbox */
+        .section h2:nth-of-type(3) + .grid-3 label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0;
+        }
+        .section h2:nth-of-type(3) + .grid-3 input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        /* --- BOTÕES DE AÇÃO GERAL (Requisito 3) --- */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .action-buttons button, .management-buttons button, #riskTable button {
+            color: var(--text-light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.3s, transform 0.2s;
+            background: var(--primary-blue);
+        }
+        
+        .action-buttons button:hover, .management-buttons button:hover {
+            background: var(--light-blue);
+            transform: translateY(-1px);
+        }
+
+        .action-buttons button.save-button {
+            background: var(--color-success);
+        }
+        .action-buttons button.save-button:hover {
+            background: #43A047;
+        }
+
+        .action-buttons button.reset-button {
+            background: #757575;
+        }
+        .action-buttons button.reset-button:hover {
+            background: #616161;
+        }
+        
+        .management-buttons button {
+            padding: 10px 15px;
+            font-size: 0.85rem;
+        }
+        
+        #riskTable button {
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+        }
+
+        /* --- RESULTADO DO RISCO (Cálculo) --- */
+        .result-box {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            background: var(--card-bg); /* Envolve o resultado */
+            border: 1px solid var(--primary-blue);
+        }
+
+        .risk-score {
+            font-size: 2.5rem;
+            display: block;
+            margin: 5px 0 10px 0;
+            color: var(--text-light);
+        }
+        
+        .result-box hr {
+            border-color: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+        }
+
+        /* Cores de Classificação (Requisito 1) */
+        .baixo { background: #065f46; color: var(--text-light); }
+        .medio { background: #92400e; color: var(--text-light); }
+        .alto { background: #991b1b; color: var(--text-light); }
+        .critico { background: #450a0a; color: #fee2e2; }
+
+        /* --- GRÁFICOS E REVISÃO (Requisitos 2 e 5) --- */
+        .chart-container {
+            padding: 15px;
+            background: var(--dark-bg);
+            border-radius: 8px;
+            height: 400px;
+        }
+
+        /* Tabela de Registros (Requisito 5) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: var(--dark-bg);
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-bg);
+        }
+
+        th {
+            background-color: var(--card-bg);
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: var(--highlight-bg);
+        }
+
+        .inconsistency { /* Marcação Visual (Requisito 5) */
+            background-color: rgba(229, 57, 53, 0.2);
+            border: 1px solid var(--color-error);
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 1024px) {
+            .grid-main { grid-template-columns: 1fr; }
+            .chart-container { height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+            
+            #risk-hero h1 { font-size: 2.5rem; }
+            
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            #avaliacao-section .container, #revisao-section .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body onload="initApp()">
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html" class="active">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li>					
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="risk-hero">
+            <div class="container">
+                <h1>Gerenciamento de Risco Cibernético <span class="text-primary-blue">PRO</span></h1>
+                <p>Ferramenta de produtividade ágil para gestão e análise contínua de riscos.</p>
+            </div>
+        </section>
+        
+        <section id="avaliacao-section">
+            <div class="container">
+                <h1>🔐 Avaliação de Risco Cibernético PRO – <span class="text-primary-blue">Fluydez Cyber</span></h1>
+                <p>Insira os dados da avaliação para calcular e registrar o nível de risco. (Baseado em **Cálculo: Probabilidade x Impacto Médio**).</p>
+
+                <div class="grid-main">
+                    <div id="input-column">
+                        <div class="section">
+                            <h2>1. Identificação do Risco (ID: <span id="current-risk-id">NOVO</span>)</h2>
+                            <div class="grid-2">
+                                <div>
+                                    <label for="riscoID">ID do Risco</label>
+                                    <input type="text" id="riscoID" placeholder="FLUY-RISK-001" readonly style="background-color: #0d1a26; cursor: default;">
+                                </div>
+                                <div>
+                                    <label for="nomeRisco">Nome do Risco</label>
+                                    <input type="text" id="nomeRisco" placeholder="Ex: Vazamento de dados sensíveis" required>
+                                    <span class="feedback-msg" id="nomeRisco-feedback">O nome do risco é obrigatório.</span>
+                                </div>
+                            </div>
+
+                            <div class="grid-3">
+                                <div>
+                                    <label for="tipoRisco">Tipo de Risco (Categoria)</label>
+                                    <select id="tipoRisco" onchange="autoCalculate()">
+                                        <option value="Segurança da Informação">Segurança da Informação</option>
+                                        <option value="Privacidade de Dados">Privacidade de Dados</option>
+                                        <option value="Inteligência Artificial">Inteligência Artificial</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="framework">Framework de Avaliação</label>
+                                    <select id="framework" onchange="autoCalculate()">
+                                        <option value="NIST">NIST</option>
+                                        <option value="ISO 27001 / 27002">ISO 27001 / 27002</option>
+                                        <option value="LGPD / ISO 27701">LGPD / ISO 27701</option>
+                                        <option value="IA / ISO 23894">IA / ISO 23894</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="analista">Analista Responsável</label>
+                                    <input type="text" id="analista" placeholder="Nome do analista" required>
+                                    <span class="feedback-msg" id="analista-feedback">O nome do analista é obrigatório.</span>
+                                </div>
+                            </div>
+
+                            <label for="descricaoRisco">Descrição do Risco</label>
+                            <textarea id="descricaoRisco" placeholder="Descreva o risco identificado..." required></textarea>
+                            <span class="feedback-msg" id="descricaoRisco-feedback">A descrição é obrigatória.</span>
+                        </div>
+
+                        <div class="section">
+                            <h2>2. Ameaça e Vulnerabilidade (ISO 27002)</h2>
+                            <div class="grid-2">
+                                <div>
+                                    <label for="ameaca">Ameaça</label>
+                                    <textarea id="ameaca" placeholder="Ex: Ataque de phishing avançado..."></textarea>
+                                </div>
+                                <div>
+                                    <label for="vulnerabilidade">Vulnerabilidade</label>
+                                    <textarea id="vulnerabilidade" placeholder="Ex: Ausência de MFA..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h2>3. Impacto na Tríade da Segurança (CID)</h2>
+                            <div class="grid-3">
+                                <label><input type="checkbox" id="cbox-conf"> Confidencialidade</label>
+                                <label><input type="checkbox" id="cbox-integ"> Integridade</label>
+                                <label><input type="checkbox" id="cbox-disp"> Disponibilidade</label>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h2>4. Probabilidade (Frequência/Exposição - 1 a 5)</h2>
+                            <select id="probabilidade" onchange="autoCalculate()">
+                                <option value="1" selected>1 – Extremamente Remota</option>
+                                <option value="2">2 – Remota</option>
+                                <option value="3">3 – Ocasional</option>
+                                <option value="4">4 – Provável</option>
+                                <option value="5">5 – Frequente</option>
+                            </select>
+                        </div>
+
+                        <div class="section">
+                            <h2>5. Impactos (1 a 5)</h2>
+                            <div class="grid-4">
+                                <div>
+                                    <label for="impactoFinanceiro">Financeiro</label>
+                                    <select id="impactoFinanceiro" onchange="autoCalculate()">
+                                        <option value="1" selected>Insignificante</option>
+                                        <option value="2">Baixo</option>
+                                        <option value="3">Moderado</option>
+                                        <option value="4">Alto</option>
+                                        <option value="5">Crítico</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="impactoImagem">Imagem</label>
+                                    <select id="impactoImagem" onchange="autoCalculate()">
+                                        <option value="1" selected>Nenhum</option>
+                                        <option value="2">Baixo</option>
+                                        <option value="3">Moderado</option>
+                                        <option value="4">Alto</option>
+                                        <option value="5">Crítico</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="impactoOperacional">Operacional</label>
+                                    <select id="impactoOperacional" onchange="autoCalculate()">
+                                        <option value="1" selected>Nenhum</option>
+                                        <option value="2">Baixo</option>
+                                        <option value="3">Moderado</option>
+                                        <option value="4">Alto</option>
+                                        <option value="5">Crítico</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="impactoLegal">Legal/Regulatório</label>
+                                    <select id="impactoLegal" onchange="autoCalculate()">
+                                        <option value="1" selected>Nenhum</option>
+                                        <option value="2">Baixo</option>
+                                        <option value="3">Moderado</option>
+                                        <option value="4">Alto</option>
+                                        <option value="5">Crítico</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="save-button" onclick="salvarRegistro()">💾 Salvar/Atualizar Registro</button>
+                            <button class="reset-button" onclick="resetForm()">➕ Novo Registro</button>
+                        </div>
+
+                    </div>
+
+                    <div id="output-column">
+                        <div class="result-box">
+                            <h2>Resultado do Risco Atual</h2>
+                            <div id="resultado">
+                                <span class="risk-score">0.0</span>
+                                <span class="result baixo">Classificação: INICIAL</span>
+                                <hr>
+                                <p style="font-size:0.9rem;">Probabilidade: N/A | Impacto Médio: N/A</p>
+                            </div>
+                        </div>
+
+                        <div class="section" style="margin-top: 20px;">
+                            <h2>Análise Gráfica por Nível (Pizza)</h2>
+                            <div class="chart-container">
+                                <canvas id="riskPieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>6. Recomendações (ISO / NIST / CIS)</h2>
+                    <textarea id="recomendacoes" placeholder="- Implementar MFA (ISO 27001 A.5.17 / NIST IA-2)..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section id="revisao-section">
+            <div class="container">
+                <h1>📋 Detalhes e Revisão Geral dos Registros</h1>
+
+                <div class="action-buttons management-buttons">
+                    <button onclick="viewAllRecords()">👁️ Visualizar Todos (Recarregar)</button>
+                    <button onclick="exportRecords('csv')">📊 Exportar (CSV)</button>
+                    <button onclick="generateReport()">📄 Gerar Relatório (PDF Simulado)</button>
+                    <button onclick="showHistory()">⏱️ Histórico de Alterações</button>
+                </div>
+
+                <div class="section grid-4">
+                    <div>
+                        <label for="filter-date">Filtrar por Data (Simulação)</label>
+                        <input type="date" id="filter-date" onchange="filterRecords()">
+                    </div>
+                    <div>
+                        <label for="filter-category">Filtrar por Categoria</label>
+                        <select id="filter-category" onchange="filterRecords()">
+                            <option value="">Todas</option>
+                            <option value="Segurança da Informação">Seg. Info</option>
+                            <option value="Privacidade de Dados">Privacidade</option>
+                            <option value="Inteligência Artificial">IA</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-risk">Filtrar por Nível de Risco</label>
+                        <select id="filter-risk" onchange="filterRecords()">
+                            <option value="">Todos</option>
+                            <option value="BAIXO">BAIXO</option>
+                            <option value="MÉDIO">MÉDIO</option>
+                            <option value="ALTO">ALTO</option>
+                            <option value="CRÍTICO">CRÍTICO</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="search-box">Busca Inteligente</label>
+                        <input type="text" id="search-box" placeholder="Busca por ID, Nome, Analista..." oninput="filterRecords()">
+                    </div>
+                </div>
+
+                <div class="section" style="border-left: 6px solid #f39c12;">
+                    <h2>Registros Atuais (<span id="record-count">0</span>)</h2>
+                    <table id="riskTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome do Risco</th>
+                                <th>Categoria</th>
+                                <th>Risco Total</th>
+                                <th>Nível</th>
+                                <th style="width: 150px;">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="riskTableBody">
+                            <tr><td colspan="6" style="text-align: center;">Nenhum registro encontrado.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue">Home</a> |
+                <a href="servicos.html" class="text-primary-blue">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue">Publicações</a> |
+                <a href="ferramentas.html" class="text-primary-blue">Ferramentas</a> |
+                <a href="sobre.html" class="text-primary-blue">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+<script>
+// -----------------------------------------------
+// --- CÓDIGO JAVASCRIPT DINÂMICO ---
+// -----------------------------------------------
+
+// ** 1. MODEL / ESTADO GLOBAL **
+const STORAGE_KEY = 'fluydezCyberRisks';
+let records = loadRecords();
+let isEditMode = false;
+let currentEditingId = null;
+let riskChart = null; // Para manter a referência do Chart.js
+
+/**
+ * Função para carregar registros do LocalStorage.
+ * @returns {Array} Lista de registros ou array vazio.
+ */
+function loadRecords() {
+    const json = localStorage.getItem(STORAGE_KEY);
+    return json ? JSON.parse(json) : [];
+}
+
+/**
+ * Função para salvar registros no LocalStorage.
+ */
+function saveRecords() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+}
+
+// ** 2. CONTROLLER (Lógica de Cálculo e Gestão) **
+
+/**
+ * Mapeia o valor de risco para sua classe e tipo (Requisito 1).
+ * @param {number} risco - O valor de risco calculado (1 a 25).
+ * @returns {{classe: string, tipo: string}} Classe CSS e tipo de risco.
+ */
+function classifyRisk(risco) {
+    if (risco <= 5) {
+        return { classe: "baixo", tipo: "BAIXO" };
+    } else if (risco <= 12) {
+        return { classe: "medio", tipo: "MÉDIO" };
+    } else if (risco <= 20) {
+        return { classe: "alto", tipo: "ALTO" };
+    } else {
+        return { classe: "critico", tipo: "CRÍTICO" };
+    }
+}
+
+/**
+ * Realiza o cálculo de risco em tempo real (Requisito 1).
+ * Chamada por eventos 'change' nos inputs relevantes.
+ */
+function autoCalculate() {
+    // Valida campos numéricos e trata como 0 se NaN
+    const p = parseInt(document.getElementById("probabilidade").value) || 0;
+    const f = parseInt(document.getElementById("impactoFinanceiro").value) || 0;
+    const i = parseInt(document.getElementById("impactoImagem").value) || 0;
+    const o = parseInt(document.getElementById("impactoOperacional").value) || 0;
+    const l = parseInt(document.getElementById("impactoLegal").value) || 0;
+
+    // Média de Impacto
+    const mediaImpacto = (f + i + o + l) / 4;
+    // Cálculo do Risco
+    const risco = p * mediaImpacto;
+
+    const { classe, tipo } = classifyRisk(risco);
+
+    // Atualiza a View do resultado
+    const resultadoDiv = document.getElementById("resultado");
+    const resultSpan = resultadoDiv.querySelector('.result');
+    const riskScore = resultadoDiv.querySelector('.risk-score');
+    const subText = resultadoDiv.querySelector('p');
+
+
+    riskScore.textContent = risco.toFixed(1);
+    resultSpan.className = "result " + classe;
+    resultSpan.textContent = `Classificação: ${tipo}`;
+    subText.innerHTML = `Probabilidade: ${p} | Impacto Médio: ${mediaImpacto.toFixed(2)}`;
+
+    // Se estiver no modo de edição, atualiza o botão de salvar
+    if (isEditMode) {
+        document.querySelector('.save-button').textContent = `✏️ Atualizar Registro #${currentEditingId}`;
+    }
+}
+
+/**
+ * Valida os campos obrigatórios e fornece feedback (Requisito 4).
+ * @returns {boolean} True se todos os campos obrigatórios estiverem preenchidos.
+ */
+function validateForm() {
+    let isValid = true;
+    const requiredInputs = [
+        "nomeRisco", "analista", "descricaoRisco" // ID é readonly e não precisa de validação de preenchimento
+    ];
+
+    // Se estiver em modo de 'NOVO', o ID é gerado, senão é o que está no input.
+    const riscoID = document.getElementById("riscoID").value.trim();
+    if (!riscoID && !isEditMode) {
+        // Gerar um ID de simulação se for novo e o campo estiver vazio (caso o readonly seja removido)
+        document.getElementById("riscoID").value = generateNextId();
+    }
+    
+    // Resetar estilos de validação
+    document.getElementById('avaliacao-section').querySelectorAll('input, select, textarea').forEach(input => {
+        input.classList.remove('invalid');
+        const feedback = document.getElementById(`${input.id}-feedback`);
+        if(feedback) feedback.style.display = 'none';
+    });
+
+
+    requiredInputs.forEach(id => {
+        const input = document.getElementById(id);
+        const feedback = document.getElementById(`${id}-feedback`);
+        if (!input.value.trim()) {
+            input.classList.add('invalid');
+            if(feedback) feedback.style.display = 'block';
+            isValid = false;
+        } else {
+             input.classList.remove('invalid');
+             if(feedback) feedback.style.display = 'none';
+        }
+    });
+
+    return isValid;
+}
+
+/**
+ * Gera o próximo ID baseado no último ID da lista.
+ * @returns {string} O próximo ID no formato FLUY-RISK-XXX.
+ */
+function generateNextId() {
+    const prefix = 'FLUY-RISK-';
+    const lastRecord = records.length > 0 ? records[records.length - 1] : null;
+    let nextNumber = 1;
+
+    if (lastRecord) {
+        const lastId = lastRecord.id;
+        const parts = lastId.split('-');
+        const lastNum = parseInt(parts[parts.length - 1]);
+        if (!isNaN(lastNum)) {
+            nextNumber = lastNum + 1;
+        }
+    }
+    return prefix + String(nextNumber).padStart(3, '0');
+}
+
+
+/**
+ * Salva ou atualiza um registro (Requisito 3).
+ */
+function salvarRegistro() {
+    if (!validateForm()) {
+        alert("🚨 Por favor, preencha todos os campos obrigatórios.");
+        return;
+    }
+
+    // Se for um novo registro, gera o ID antes de coletar os dados
+    if (!isEditMode) {
+        const newId = generateNextId();
+        document.getElementById("riscoID").value = newId;
+    }
+    
+    const newRecord = collectFormData();
+    const existingIndex = records.findIndex(r => r.id === newRecord.id);
+
+    if (isEditMode && newRecord.id === currentEditingId) {
+        // Modo de Edição
+        const oldRecord = records[existingIndex];
+        
+        // Log de Alterações (opcional, mas bom para rastreabilidade)
+        const log = oldRecord.log || [];
+        log.push({
+            timestamp: new Date().toISOString(),
+            action: `Edição | Risco de ${oldRecord.risco} para ${newRecord.risco}`,
+        });
+
+        // Atualiza o registro
+        records[existingIndex] = {
+            ...newRecord,
+            log: log,
+            dataCriacao: oldRecord.dataCriacao, 
+            dataModificacao: new Date().toLocaleDateString('pt-BR')
+        };
+        alert(`✅ Registro ${newRecord.id} atualizado com sucesso!`);
+    } else if (existingIndex === -1) {
+        // Novo Registro
+        records.push({
+            ...newRecord,
+            dataCriacao: new Date().toLocaleDateString('pt-BR'),
+            dataModificacao: new Date().toLocaleDateString('pt-BR'),
+            log: [{ timestamp: new Date().toISOString(), action: 'Registro criado' }]
+        });
+        alert(`✅ Novo registro ${newRecord.id} criado com sucesso!`);
+    } else {
+        // ID já existe e não está em modo de edição (erro se o usuário tentou forçar o ID)
+        alert(`⚠️ O ID de Risco ${newRecord.id} já existe. Edite o registro existente ou limpe o formulário para um novo ID.`);
+        return;
+    }
+
+    saveRecords();
+    resetForm();
+    updateCharts();
+    viewAllRecords();
+}
+
+/**
+ * Coleta todos os dados do formulário e calcula o risco final.
+ * @returns {Object} Objeto completo com dados e resultado de risco.
+ */
+function collectFormData() {
+    const p = parseInt(document.getElementById("probabilidade").value) || 0;
+    const f = parseInt(document.getElementById("impactoFinanceiro").value) || 0;
+    const i = parseInt(document.getElementById("impactoImagem").value) || 0;
+    const o = parseInt(document.getElementById("impactoOperacional").value) || 0;
+    const l = parseInt(document.getElementById("impactoLegal").value) || 0;
+
+    const mediaImpacto = (f + i + o + l) / 4;
+    const risco = p * mediaImpacto;
+    const { classe, tipo } = classifyRisk(risco);
+
+    return {
+        id: document.getElementById("riscoID").value.trim(),
+        nome: document.getElementById("nomeRisco").value,
+        tipo: document.getElementById("tipoRisco").value,
+        framework: document.getElementById("framework").value,
+        analista: document.getElementById("analista").value,
+        descricao: document.getElementById("descricaoRisco").value,
+        ameaca: document.getElementById("ameaca").value,
+        vulnerabilidade: document.getElementById("vulnerabilidade").value,
+        cid: {
+            conf: document.getElementById("cbox-conf").checked,
+            integ: document.getElementById("cbox-integ").checked,
+            disp: document.getElementById("cbox-disp").checked
+        },
+        probabilidade: p,
+        impactos: { f, i, o, l },
+        mediaImpacto: mediaImpacto.toFixed(2),
+        risco: risco.toFixed(1),
+        nivel: tipo,
+        recomendacoes: document.getElementById("recomendacoes").value
+    };
+}
+
+// ** 3. VIEW (Renderização e Interface) **
+
+/**
+ * Preenche o formulário para edição (Requisito 3).
+ * @param {string} id - O ID do registro a ser editado.
+ */
+function editRecord(id) {
+    const record = records.find(r => r.id === id);
+    if (!record) return;
+
+    // Entra em modo de edição
+    isEditMode = true;
+    currentEditingId = id;
+
+    // Preenche o formulário
+    document.getElementById("current-risk-id").textContent = id;
+    document.getElementById("riscoID").value = record.id;
+    document.getElementById("nomeRisco").value = record.nome;
+    document.getElementById("tipoRisco").value = record.tipo;
+    document.getElementById("framework").value = record.framework;
+    document.getElementById("analista").value = record.analista;
+    document.getElementById("descricaoRisco").value = record.descricao;
+    document.getElementById("ameaca").value = record.ameaca;
+    document.getElementById("vulnerabilidade").value = record.vulnerabilidade;
+    document.getElementById("cbox-conf").checked = record.cid.conf;
+    document.getElementById("cbox-integ").checked = record.cid.integ;
+    document.getElementById("cbox-disp").checked = record.cid.disp;
+    document.getElementById("probabilidade").value = record.probabilidade;
+    document.getElementById("impactoFinanceiro").value = record.impactos.f;
+    document.getElementById("impactoImagem").value = record.impactos.i;
+    document.getElementById("impactoOperacional").value = record.impactos.o;
+    document.getElementById("impactoLegal").value = record.impactos.l;
+    document.getElementById("recomendacoes").value = record.recomendacoes;
+
+    // Dispara o cálculo para exibir o resultado
+    autoCalculate();
+
+    // Feedback visual (Requisito 4)
+    document.querySelector('.save-button').textContent = `✏️ Atualizar Registro #${id}`;
+    window.scrollTo(0, 0); // Volta para o topo do formulário
+}
+
+/**
+ * Exclui um registro (Requisito 3).
+ * @param {string} id - O ID do registro a ser excluído.
+ */
+function deleteRecord(id) {
+    if (confirm(`Tem certeza que deseja EXCLUIR o registro ${id}? Essa ação é irreversível!`)) {
+        records = records.filter(r => r.id !== id);
+        saveRecords();
+        resetForm(); // Limpa o formulário caso o registro excluído estivesse sendo editado
+        viewAllRecords();
+        updateCharts();
+        alert(`🗑️ Registro ${id} excluído com sucesso!`);
+    }
+}
+
+/**
+ * Limpa e reseta o formulário para um novo registro (Requisito 4).
+ */
+function resetForm() {
+    isEditMode = false;
+    currentEditingId = null;
+    document.getElementById("current-risk-id").textContent = "NOVO";
+    document.getElementById("riscoID").value = ''; // Limpa o campo ID, a geração ocorre no salvar
+    document.querySelector('.save-button').textContent = "💾 Salvar/Atualizar Registro";
+    
+    // Iterar e limpar/resetar todos os inputs e textareas
+    document.getElementById('avaliacao-section').querySelectorAll('input, select, textarea').forEach(input => {
+        if (input.type === 'checkbox') {
+            input.checked = false;
+        } else if (input.tagName === 'SELECT') {
+             // Garante que todos os selects voltem para o primeiro valor ('1' para Probabilidade/Impacto)
+            input.value = input.options[0].value; 
+        } else {
+            input.value = '';
+        }
+
+        // Remover classes de validação e mensagens
+        input.classList.remove('invalid');
+        const feedback = document.getElementById(`${input.id}-feedback`);
+        if(feedback) feedback.style.display = 'none';
+    });
+
+    // Resetar o resultado do cálculo
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.querySelector('.risk-score').textContent = '0.0';
+    resultadoDiv.querySelector('.result').className = 'result baixo';
+    resultadoDiv.querySelector('.result').textContent = 'Classificação: INICIAL';
+    resultadoDiv.querySelector('p').innerHTML = 'Probabilidade: N/A | Impacto Médio: N/A';
+}
+
+/**
+ * Renderiza a tabela de todos os registros, aplicando filtros e marcações (Requisito 5).
+ * @param {Array} filteredRecords - O array de registros a ser exibido.
+ */
+function viewAllRecords(filteredRecords = records) {
+    const tbody = document.getElementById("riskTableBody");
+    tbody.innerHTML = '';
+    document.getElementById("record-count").textContent = filteredRecords.length;
+
+    if (filteredRecords.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-secondary);">Nenhum registro encontrado.</td></tr>';
+        return;
+    }
+
+    filteredRecords.forEach(record => {
+        // Marcação visual de inconsistência (Exemplo: Risco Crítico com Triagem Baixa)
+        let rowClass = '';
+        if (record.nivel === 'CRÍTICO' && !record.cid.conf && !record.cid.integ && !record.cid.disp) {
+            rowClass = 'inconsistency'; // Marca para revisão
+        }
+
+        const row = tbody.insertRow();
+        row.className = rowClass;
+
+        row.insertCell().textContent = record.id;
+        row.insertCell().textContent = record.nome;
+        row.insertCell().textContent = record.tipo;
+        row.insertCell().textContent = record.risco;
+
+        const nivelCell = row.insertCell();
+        nivelCell.innerHTML = `<span class="result ${record.nivel.toLowerCase()}" style="padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">${record.nivel}</span>`;
+
+        const actionCell = row.insertCell();
+        actionCell.innerHTML = `
+            <button onclick="editRecord('${record.id}')">✏️ Editar</button>
+            <button onclick="deleteRecord('${record.id}')" style="background: var(--color-error);">🗑️ Excluir</button>
+        `;
+    });
+}
+
+/**
+ * Aplica filtros e busca (Requisito 5).
+ */
+function filterRecords() {
+    const category = document.getElementById('filter-category').value;
+    const riskLevel = document.getElementById('filter-risk').value;
+    const search = document.getElementById('search-box').value.toLowerCase();
+    
+    let filtered = records.filter(record => {
+        const matchesCategory = !category || record.tipo === category;
+        const matchesRisk = !riskLevel || record.nivel === riskLevel;
+        const matchesSearch = !search ||
+            record.id.toLowerCase().includes(search) ||
+            record.nome.toLowerCase().includes(search) ||
+            record.analista.toLowerCase().includes(search);
+
+        return matchesCategory && matchesRisk && matchesSearch;
+    });
+
+    viewAllRecords(filtered);
+}
+
+/**
+ * Inicializa ou atualiza os gráficos dinâmicos (Requisito 2).
+ */
+function updateCharts() {
+    const riskCounts = { BAIXO: 0, MÉDIO: 0, ALTO: 0, CRÍTICO: 0 };
+    records.forEach(r => {
+        if (riskCounts.hasOwnProperty(r.nivel)) {
+            riskCounts[r.nivel]++;
+        }
+    });
+
+    const data = {
+        labels: ['Baixo', 'Médio', 'Alto', 'Crítico'],
+        datasets: [{
+            data: [riskCounts.BAIXO, riskCounts.MÉDIO, riskCounts.ALTO, riskCounts.CRÍTICO],
+            backgroundColor: ['#065f46', '#92400e', '#991b1b', '#450a0a'],
+            hoverOffset: 4
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'var(--text-light)'
+                    }
+                }
+            }
+        }
+    };
+
+    if (riskChart) {
+        riskChart.data = data;
+        riskChart.update();
+    } else {
+        const ctx = document.getElementById('riskPieChart').getContext('2d');
+        riskChart = new Chart(ctx, config);
+    }
+}
+
+// Funções de Simulação (Requisito 3)
+function exportRecords(format) {
+    alert(`Simulação: Exportando ${records.length} registros no formato ${format.toUpperCase()}.`);
+    // Aqui seria o código real de conversão para CSV/JSON e download
+}
+
+function generateReport() {
+    alert(`Simulação: Gerando Relatório PDF com os registros atuais.`);
+    // Aqui seria o código para gerar um PDF usando uma biblioteca como jsPDF
+}
+
+function showHistory() {
+    alert("Simulação: Exibindo histórico de alterações do registro selecionado. (Detalhes estão no objeto 'log' de cada registro)");
+}
+
+
+/**
+ * Inicializa a aplicação ao carregar a página.
+ */
+function initApp() {
+    // Inicializa a tabela
+    viewAllRecords();
+    // Inicializa o formulário (reseta para os novos valores default)
+    resetForm();
+    // Inicializa os gráficos
+    updateCharts(); 
+    // Garante que a lógica de cálculo esteja pronta para os valores default
+    autoCalculate(); 
+}
+
+// Inicializa a aplicação ao carregar a página 
+
+</script>
+</body>
+</html>

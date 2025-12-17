@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamentos | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"> <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Padrão */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            /* Cores de Nível */
+            --level-basic: #4CAF50; /* Verde */
+            --level-inter: #FFC107; /* Amarelo */
+            --level-adv: #F44336; /* Vermelho */
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+        
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA TREINAMENTOS --- */
+        
+        /* Hero Section com Imagem de Fundo (site_publishTools.png) */
+        #training-hero {
+            padding: 120px 0 80px 0;
+            text-align: center;
+            color: var(--text-light);
+            /* Aplica a imagem de fundo com overlay escuro */
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                                 url('imagens/site_publishTools.png'); /* Assumindo que a imagem está em 'imagens/' */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        #training-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #training-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        /* Agrupamento de Tipos de Treinamento */
+        .training-type-group {
+            margin-bottom: 70px;
+        }
+
+        .training-type-group h2 {
+            font-size: 2rem;
+            /* text-align: left; REMOVIDO para usar flex */ 
+            margin-bottom: 30px;
+            /* color: var(--light-blue); REMOVIDO: a cor será aplicada ao link interno */
+            color: var(--text-light); /* Cor de fallback/default para o h2 */
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 10px;
+            
+            /* Novo: Configuração Flex para alinhar título e botão */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Novo estilo para o link do título da categoria (parte que não é botão) */
+        .training-type-group h2 > a:not(.category-button) {
+            color: var(--light-blue); /* Aplica a cor do título */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600; /* Garante que o texto do título seja bold */
+        }
+        
+        .training-type-group h2 > a:not(.category-button):hover {
+            color: var(--primary-blue);
+        }
+        
+        /* Novo estilo para o botão de cada categoria, adaptando o enroll-button */
+        .category-button {
+            padding: 8px 15px; 
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-button:hover {
+            background-color: var(--light-blue);
+            transform: scale(1.05);
+        }
+        /* Fim dos novos estilos */
+
+        /* Grid de Cards de Treinamento */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Card de Treinamento */
+        .training-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            border-left: 5px solid var(--primary-blue); /* Destaque lateral */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .training-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+        }
+
+        .training-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .training-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin: 0;
+            text-align: left;
+        }
+        
+        .training-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        /* Badge de Nível */
+        .training-level {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            white-space: nowrap;
+        }
+
+        /* Cores dos Níveis */
+        .level-basic { background-color: var(--level-basic); }
+        .level-intermediate { background-color: var(--level-inter); }
+        .level-advanced { background-color: var(--level-adv); }
+        
+        .enroll-button {
+            display: block;
+            width: 100%;
+            padding: 12px 25px;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .enroll-button:hover {
+            background-color: var(--light-blue);
+            transform: scale(1.02);
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+            
+            #training-hero h1 { font-size: 2.5rem; }
+            /* Alinhar o conteúdo do H2 no centro em telas menores */
+            .training-type-group h2 { 
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .training-type-group h2 > a:not(.category-button) {
+                text-align: center;
+            }
+            .category-button {
+                width: 100%; /* Botão em largura total no mobile */
+                max-width: 300px; /* Limite de largura para não ficar muito grande */
+                justify-content: center;
+            }
+            
+            .training-type-group h2 { margin-bottom: 30px; }
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html" class="active">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="training-hero">
+            <div class="container">
+                <h1>Capacitação Profissional | <span class="text-primary-blue">Tecnologia e Segurança</span></h1>
+                <p>Nossa plataforma oferece trilhas de aprendizado estruturadas por domínio, do nível fundamental ao avançado, focadas nas competências mais exigidas pelo mercado.</p>
+            </div>
+        </section>
+        
+        <section id="training-list" class="treinamento-section">
+            <div class="container">
+                <h2 class="section-title">Encontre Seu Próximo Treinamento</h2>
+                <p class="section-subtitle">Escolha sua área de especialização. Todos os cursos abaixo são exemplos de trilhas de estudo estruturadas.</p>
+
+                <div class="training-type-group">
+                    <h2>
+                        <a href="treina_segcyber.html">🔐 Segurança Cibernética</a>
+                        <a href="treina_segcyber.html" class="category-button">Ver Cursos <i class="fas fa-arrow-right"></i></a>
+                    </h2>
+                </div>
+
+                <div class="training-type-group">
+                    <h2>
+                        <a href="treina_cloud.html">☁️ Cloud (Computação em Nuvem)</a>
+                        <a href="treina_cloud.html" class="category-button">Ver Cursos <i class="fas fa-arrow-right"></i></a>
+                    </h2>
+                </div>
+
+                <div class="training-type-group">
+                    <h2>
+                        <a href="treina_ia.html">🤖 Inteligência Artificial (IA)</a>
+                        <a href="treina_ia.html" class="category-button">Ver Cursos <i class="fas fa-arrow-right"></i></a>
+                    </h2>
+                </div>
+
+                <div class="training-type-group">
+                    <h2>
+                        <a href="treina_dados.html">📊 Dados (Data & Analytics)</a>
+                        <a href="treina_dados.html" class="category-button">Ver Cursos <i class="fas fa-arrow-right"></i></a>
+                    </h2>
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="ferramentas.html" class="text-primary-blue" style="color: var(--primary-blue);">Ferramentas</a> |
+                <a href="treinamentos.html" class="text-primary-blue" style="color: var(--primary-blue);">Treinamentos</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            /* --policy-red: #DC3545; REMOVIDO */
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Estilo para destaque da cor azul */
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos do Logo */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA SOBRE --- */
+
+        /* Hero Section com Imagem de Fundo */
+        #about-hero {
+            padding: 150px 0 80px 0;
+            text-align: center;
+            color: var(--text-light);
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                                 url('Imagens/site_sobre.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        #about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #about-hero p {
+            font-size: 1.3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Seção Missão e Visão */
+        #mvv-section {
+            background-color: var(--highlight-bg);
+            padding: 60px 0;
+        }
+
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .mvv-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .mvv-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .mvv-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Seção Histórico e Equipe (Detalhes) */
+        #history-team-section {
+            background-color: var(--dark-bg);
+        }
+        
+        .content-block {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--card-bg);
+        }
+
+        .content-block:last-child {
+            border-bottom: none;
+        }
+
+        .content-block h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 15px;
+            color: var(--text-light);
+        }
+
+        .content-block p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            max-width: 900px;
+        }
+        
+        /* Cards da Equipe */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+            gap: 30px;
+            margin-top: 40px;
+            text-align: center;
+            justify-content: center; 
+        }
+
+        .team-member {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member img {
+            width: 100%;
+            max-width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--primary-blue);
+            margin-bottom: 15px;
+            filter: grayscale(10%);
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        /* --- Nova Seção de Políticas (Cores ajustadas para azul) --- */
+        #policies-section {
+            background-color: var(--highlight-bg);
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--card-bg);
+        }
+
+        #policies-section h2 {
+            color: var(--text-light);
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .policy-links-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .policy-links-grid a {
+            display: block;
+            background-color: var(--primary-blue); /* Usando Azul Primário */
+            color: var(--text-light);
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+            white-space: nowrap; 
+        }
+        
+        .policy-links-grid a:hover {
+            background-color: var(--light-blue); /* Usando Azul Mais Claro no hover */
+            transform: translateY(-2px);
+        }
+
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+
+            #about-hero h1 { font-size: 2.5rem; }
+            #about-hero p { font-size: 1rem; }
+            
+            .mvv-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-block h2 { font-size: 1.8rem; }
+            .team-grid {
+                /* Mantém o minmax(150px, 1fr) para ocupar 100% em telas pequenas */
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                justify-content: center; /* A centralização é mantida, mas o 1fr fará com que o card ocupe a linha */
+            }
+            .policy-links-grid {
+                flex-direction: column;
+            }
+            .policy-links-grid a {
+                 width: 80%;
+                 margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li> 
+                    <li><a href="sobre.html" class="active">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="about-hero">
+            <div class="container">
+                <h1>Transformando Riscos em Confiança</h1>
+                <p>Conheça a Fluydez Cyber: nossa história, nossos valores e a equipe de especialistas que impulsiona a segurança do seu negócio.</p>
+            </div>
+        </section>
+        
+        <section id="mvv-section">
+            <div class="container">
+                <div class="mvv-grid">
+                    <div class="mvv-card">
+                        <h3>Missão</h3>
+                        <p>Capacitar organizações a prosperar na era digital, oferecendo soluções de cibersegurança e governança que transformam a proteção de dados em um diferencial competitivo.</p>
+                    </div>
+                    <div class="mvv-card">
+                        <h3>Visão</h3>
+                        <p>Ser a consultoria de segurança e compliance mais confiável e inovadora, reconhecida pela excelência técnica e pelo impacto positivo na resiliência dos nossos clientes.</p>
+                    </div>
+                    <div class="mvv-card">
+                        <h3>Valores</h3>
+                        <p>Integridade inegociável, excelência técnica, colaboração transparente, inovação contínua e foco total no sucesso e na segurança do cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history-team-section">
+            <div class="container">
+                
+                <div class="content-block">
+                    <h2>Nossa História e Evolução</h2>
+                    <p>Fundada em 2018 por um grupo de especialistas em segurança da informação e GRC, a Fluydez Cyber nasceu com a missão de simplificar a complexidade da cibersegurança. Começamos focados em auditorias ISO 27001 e rapidamente expandimos para incluir serviços de Pentest, Resposta a Incidentes e, mais recentemente, adequação completa à LGPD e à ISO 27701. Hoje, somos referência em soluções que integram governança, risco e tecnologia.</p>
+                </div>
+                
+                <div class="content-block">
+                    <h2>Liderança e Equipe de Especialistas</h2>
+                    <p>Nossa equipe é formada por profissionais certificados nas mais altas normas globais, incluindo CISSP, ISO 27001 Lead Implementer e Lead Auditor, CISM e CISA. Conheça alguns de nossos líderes:</p>
+                    
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="Imagens/Roberto.png" alt="José Roberto Jesus"> 
+                            <h4>Roberto</h4>
+                            <p>CEO e Fundador | GRC & Privacidade</p>
+                        </div>
+                        </div>
+                </div>
+                
+                <div class="content-block" id="policies-section">
+                    <h2>Políticas e Documentação</h2>
+                    <p>Comprometimento com transparência e ética. Acesse nossos documentos chave de governança e compliance:</p>
+                    
+                    <div class="policy-links-grid">
+                        <a href="politica_etica.html">Política de Ética e Conduta</a>
+                        <a href="politica_privacidade.html">Política de Privacidade (LGPD)</a>
+                        <a href="politica_seguranca.html">Política de Segurança da Informação</a>
+                    </div>
+                    
+                    <p style="margin-top: 30px; font-style: italic;">
+                        <a href="site_manutencao.html" class="text-primary-blue" style="color: var(--primary-blue); text-decoration: underline;">
+                           Clique aqui para a Página Principal de Políticas e Termos
+                        </a>
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="ferramentas.html" class="text-primary-blue" style="color: var(--primary-blue);">Ferramentas</a> |
+                <a href="treinamentos.html" class="text-primary-blue" style="color: var(--primary-blue);">Treinamentos</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a> |
+                <a href="site_manutencao.html" class="text-primary-blue" style="color: var(--primary-blue);">Políticas</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

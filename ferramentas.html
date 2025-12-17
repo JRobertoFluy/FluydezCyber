@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferramentas Fluydez | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Padrão */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh; /* Garantir que o footer fique no final */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1; /* Permite que o conteúdo principal ocupe o espaço */
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Estilo para destaque da cor azul */
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos do Logo (Texto + Imagem) */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Estilo da Imagem do Logo */
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: auto; /* Empurra o rodapé para baixo */
+        }
+        
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA FERRAMENTAS --- */
+        
+        /* Hero Section com Imagem de Fundo (escudo.png) */
+        #tools-hero {
+            padding: 120px 0 80px 0;
+            text-align: center;
+            color: var(--text-light);
+            background-image: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                              url('imagens/site_publishTools.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        #tools-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #tools-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Grid de Ferramentas (Layout responsivo com no mínimo 350px) */
+        #tools-list {
+            background-color: var(--highlight-bg);
+            padding: 80px 0;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        /* Card de Ferramenta */
+        .tool-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 5px solid var(--primary-blue);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+        }
+        
+        .tool-card h3 {
+            font-size: 1.6rem;
+            color: var(--light-blue);
+            margin-bottom: 15px;
+        }
+        
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+        
+        .access-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .access-button:hover {
+            background-color: var(--light-blue);
+            transform: scale(1.05);
+        }
+        
+        /* Ícone (simulação com emoji, idealmente seria um SVG ou Font Awesome) */
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--primary-blue);
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+            
+            #tools-hero h1 { font-size: 2.5rem; }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html" class="active">Ferramentas</a></li>
+					<li><a href="treinamentos.html" >Treinamentos</a></li>					
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="tools-hero">
+            <div class="container">
+                <h1>As <span class="text-primary-blue">Ferramentas Exclusivas</span> da Fluydez Cyber</h1>
+                <p>Recursos e utilitários desenvolvidos para auxiliar profissionais e empresas na gestão de GRC e Cibersegurança.</p>
+            </div>
+        </section>
+        
+        <section id="tools-list">
+            <div class="container">
+                <h2 class="section-title">Nossas Soluções Práticas</h2>
+                <p class="section-subtitle">Acelere seus processos de compliance, auditoria e gestão de riscos com as ferramentas que utilizamos no dia a dia.</p>
+
+                <div class="tools-grid">
+                    
+                    <div class="tool-card">
+                        <span class="tool-icon">📝</span>
+                        <h3>BIA – Análise de Impacto aos Negócios</h3>
+                        <p>Uma ferramenta interativa para documentar processos críticos, calcular o RTO/RPO e avaliar o impacto de interrupções de forma estruturada, baseada em nossa metodologia.</p>
+                        <a href="bia.html" class="access-button">Acessar BIA</a>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <span class="tool-icon">🔗</span>
+                        <h3>Matriz de Correlação de Controles de Segurança</h3>
+                        <p>Documento detalhado que mapeia e correlaciona controles de segurança de diferentes frameworks e normas (ISO, NIST, etc.) para facilitar a conformidade.</p>
+                        <a href="https://claude.ai/public/artifacts/ae553cd6-ba2c-48ea-968e-468324b03cee" target="_blank" class="access-button">Acessar Matriz</a>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <span class="tool-icon">📊</span>
+                        <h3>App Matriz de Risco Cyber Fluydez</h3>
+                        <p>Uma aplicação interativa para calcular, visualizar e gerenciar sua matriz de riscos cibernéticos de forma simplificada e eficiente, baseada em nossa metodologia.</p>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221zx2gBMIzwU5Sc1sID4oDyJmGmJj8ch_r%22%5D,%22action%22:%22open%22,%22userId%22:%22105760337930187530409%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="access-button">Abrir App</a>
+                    </div>
+
+                    </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="ferramentas.html" class="text-primary-blue" style="color: var(--primary-blue);">Ferramentas</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

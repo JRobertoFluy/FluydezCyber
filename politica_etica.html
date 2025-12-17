@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Ética Profissional | Fluydez Cyber</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"> 
+
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - Padrão */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1C1C1E;
+            --primary-blue: #007BFF;
+            --light-blue: #00AFFF;
+            --text-light: #F0F0F0;
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #1A1A1A; 
+            --star-color: #FFD700;
+            --success-green: #28a745;
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        /* --- Header (Padrão) --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Ajustei a altura para o logo (baseado no image_b7a742.png) */
+        .logo-img {
+            height: 45px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+        
+        /* --- Rodapé (Padrão) --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- SEÇÃO POLÍTICA --- */
+        #policy-hero {
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('imagens/central.jpeg') no-repeat center center/cover;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--success-green); /* Mudança para verde para dar foco à ética */
+        }
+
+        #policy-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        #policy-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+        
+        #policy-content {
+            padding: 80px 0;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        #policy-content h2 {
+            font-size: 2rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 5px;
+            color: var(--primary-blue);
+        }
+
+        #policy-content h3 {
+            font-size: 1.25rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        #policy-content p, #policy-content ul {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        #policy-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-left: 10px;
+        }
+
+        #policy-content ul li {
+            margin-bottom: 5px;
+        }
+        
+        /* Destaque para palavras-chave nos princípios */
+        #policy-content strong {
+            color: var(--text-light);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { display: none; }
+            
+            #policy-hero h1 { font-size: 2.5rem; }
+            #policy-hero p { font-size: 1rem; }
+            section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="policy-hero">
+            <div class="container">
+                <h1 style="color: var(--success-green);">POLÍTICA DE ÉTICA PROFISSIONAL</h1>
+                <p>
+                    Fluydez Cibersegurança e Soluções Ltda
+                </p>
+                <i class="fas fa-balance-scale" style="font-size: 2rem; color: var(--success-green);"></i>
+            </div>
+        </section>
+
+        <section id="policy-content">
+            <div class="container">
+                
+                <h2>1. Objetivo</h2>
+                <p>
+                    Esta Política de Ética Profissional estabelece os princípios, valores e condutas que orientam a atuação da Fluydez Cibersegurança e Soluções Ltda, de seus sócios, colaboradores, parceiros e prestadores de serviço, garantindo comportamento íntegro, responsável e alinhado às leis, normas técnicas e boas práticas profissionais.
+                </p>
+
+                <h2>2. Princípios Fundamentais</h2>
+                <p>A Fluydez pauta suas atividades nos seguintes princípios:</p>
+                <ul>
+                    <li><strong>Legalidade:</strong> cumprimento rigoroso da legislação vigente, regulamentos e normas aplicáveis.</li>
+                    <li><strong>Integridade:</strong> atuação ética, honesta e transparente em todas as relações.</li>
+                    <li><strong>Confidencialidade:</strong> proteção absoluta das informações, dados e ativos confiados pelos clientes e parceiros.</li>
+                    <li><strong>Responsabilidade técnica:</strong> prestação de serviços com competência, diligência e base técnica comprovável.</li>
+                    <li><strong>Imparcialidade:</strong> independência de julgamento, especialmente em atividades de auditoria e avaliação.</li>
+                    <li><strong>Respeito:</strong> valorização das pessoas, da diversidade e das relações profissionais equilibradas.</li>
+                </ul>
+
+                <h2>3. Conformidade Legal e Regulatória</h2>
+                <p>A empresa compromete-se a observar:</p>
+                <ul>
+                    <li>Leis aplicáveis à atividade empresarial e profissional;</li>
+                    <li>Normas de proteção de dados e privacidade, incluindo a LGPD;</li>
+                    <li>Normas e boas práticas de segurança da informação, governança e auditoria;</li>
+                    <li>Regras éticas e profissionais relacionadas à consultoria técnica e treinamentos.</li>
+                </ul>
+                <p>Nenhuma atividade será realizada com o objetivo de burlar controles, fraudar informações ou violar direitos de terceiros.</p>
+
+                <h2>4. Confidencialidade e Proteção da Informação</h2>
+                <p>Todas as informações acessadas no exercício das atividades são tratadas como confidenciais, incluindo dados pessoais, estratégicos, técnicos, financeiros ou operacionais.</p>
+                <p>É vedada a divulgação, compartilhamento ou uso indevido dessas informações sem autorização formal ou obrigação legal.</p>
+
+                <h2>5. Conflito de Interesses</h2>
+                <p>A Fluydez não admite situações de conflito de interesses que possam comprometer a independência, imparcialidade ou credibilidade de seus serviços.</p>
+                <p>Qualquer potencial conflito deve ser comunicado imediatamente e tratado de forma transparente.</p>
+
+                <h2>6. Atuação em Auditorias e Consultorias</h2>
+                <p>Em atividades de auditoria, avaliação técnica ou consultoria:</p>
+                <ul>
+                    <li>As análises devem ser baseadas em evidências, critérios técnicos e fatos verificáveis;</li>
+                    <li>É vedada qualquer manipulação de resultados ou relatórios;</li>
+                    <li>Recomendações devem refletir a realidade avaliada, sem favorecimento indevido.</li>
+                </ul>
+
+                <h2>7. Relacionamento com Clientes, Parceiros e Terceiros</h2>
+                <p>A empresa mantém relações profissionais pautadas por respeito, clareza contratual, comunicação objetiva e boa-fé.</p>
+                <p>Não são admitidas práticas de corrupção, suborno, favorecimento indevido ou vantagens ilegais, diretas ou indiretas.</p>
+
+                <h2>8. Conduta Profissional e Uso do Nome da Empresa</h2>
+                <p>Todos os representantes da Fluydez devem:</p>
+                <ul>
+                    <li>Preservar a imagem, reputação e credibilidade da empresa;</li>
+                    <li>Utilizar o nome, marca e informações corporativas de forma responsável;</li>
+                    <li>Evitar manifestações públicas que possam comprometer a integridade institucional.</li>
+                </ul>
+
+                <h2>9. Violações e Medidas Disciplinares</h2>
+                <p>O descumprimento desta Política poderá resultar em medidas administrativas, contratuais ou legais, conforme a gravidade da infração, incluindo rescisão de contratos e comunicação aos órgãos competentes, quando aplicável.</p>
+
+                <h2>10. Compromisso Ético</h2>
+                <p>A Fluydez Cibersegurança e Soluções Ltda reafirma seu compromisso com a ética, a responsabilidade profissional e a confiança, entendendo que esses valores são essenciais para a sustentabilidade do negócio e para a proteção de seus clientes e da sociedade.</p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida: 
+                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
+                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
+                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
+                <a href="ferramentas.html" class="text-primary-blue" style="color: var(--primary-blue);">Ferramentas</a> |
+                <a href="treinamentos.html" class="text-primary-blue" style="color: var(--primary-blue);">Treinamentos</a> |
+                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
+                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

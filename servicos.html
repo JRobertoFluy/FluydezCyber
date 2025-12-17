@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços | Fluydez Cyber - Soluções em Cibersegurança e GRC</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* * DESIGN SYSTEM (Fluydez Cyber) - REFINADO */
+        :root {
+            --dark-bg: #0A0A0A; /* Fundo mais profundo */
+            --card-bg: #1B1B1E; /* Cor de card ligeiramente mais clara */
+            --primary-blue: #007BFF;
+            --light-blue: #00CFFF; /* Azul mais vibrante para destaque/glow */
+            --text-light: #FAFAFA; /* Texto mais branco */
+            --text-secondary: #AAAAAA;
+            --highlight-bg: #222225; /* Usado para seções alternadas, se necessário */
+            --blue-glow-light: rgba(0, 153, 255, 0.4); /* Brilho sutil */
+            --blue-glow-medium: rgba(0, 153, 255, 0.2);
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Configurações Globais --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px; /* Aumentei ligeiramente o container */
+            margin: 0 auto;
+            padding: 0 25px; /* Aumentei o padding lateral */
+        }
+
+        h1, h2, h3 {
+            font-weight: 700; /* Headers mais fortes */
+            line-height: 1.2;
+        }
+        
+        section {
+            padding: 100px 0; /* Aumentei o espaçamento da seção */
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem; /* Título maior */
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-transform: uppercase; /* Mais impacto visual */
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 70px; /* Mais espaço */
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Estilo para destaque da cor azul */
+        .text-primary-blue {
+            color: var(--primary-blue);
+            text-shadow: 0 0 5px var(--blue-glow-medium); /* Adicionando o "glow" */
+        }
+
+        /* --- Header e Logo --- */
+        .header {
+            background-color: rgba(10, 10, 10, 0.9); /* Usando o novo dark-bg com mais opacidade */
+            backdrop-filter: blur(15px); /* Blur mais intenso */
+            padding: 15px 0; /* Header um pouco mais compacto */
+            border-bottom: 1px solid var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos do Logo (Texto + Imagem) */
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Estilo da Imagem do Logo (MANTENDO O TAMANHO ORIGINAL) */
+        .logo-img {
+            height: 40px; 
+            width: auto;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+            text-shadow: 0 0 8px var(--blue-glow-light); /* Glow no nome da marca */
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px; /* Mais espaçamento entre os links */
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500; /* Peso médio */
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
+            padding-bottom: 5px; /* Espaço para o underline de hover */
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--light-blue);
+            text-shadow: 0 0 5px var(--blue-glow-light);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+            background-color: var(--light-blue);
+        }
+        
+        /* --- Rodapé --- */
+        .footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid var(--card-bg);
+            padding: 40px 0; /* Mais padding */
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer p:first-of-type {
+            margin-bottom: 10px;
+        }
+
+        /* Removendo o estilo inline no HTML e aplicando no CSS para consistência */
+        .footer a {
+            color: var(--primary-blue) !important;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .footer a:hover {
+            color: var(--light-blue) !important;
+            text-shadow: 0 0 5px var(--blue-glow-light);
+        }
+
+
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA DE SERVIÇOS --- */
+        
+        /* Hero Section com Imagem de Fundo e Transparência de 90% */
+        #services-hero {
+            padding: 120px 0 80px 0; /* Mais vertical padding */
+            text-align: center;
+            color: var(--text-light);
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+            
+            /* APLICAÇÃO DA NOVA IMAGEM DE FUNDO COM OVERLAY ESCURO */
+            background-image: linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)), /* Aumentei a opacidade do overlay para 95% */
+                                url('imagens/site_service.jpeg'); 
+            background-size: cover;
+            background-position: center 20%; /* Ajustei a posição para focar melhor a imagem */
+            background-repeat: no-repeat;
+        }
+
+        #services-hero h1 {
+            font-size: 4rem; /* Título principal mais impactante */
+            color: var(--text-light);
+            text-shadow: 0 0 10px rgba(0, 153, 255, 0.7); /* Glow mais forte */
+            margin-bottom: 10px;
+        }
+
+        #services-hero p {
+            font-size: 1.3rem; /* Parágrafo maior */
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 20px auto 0 auto;
+        }
+
+        /* Services Grid */
+        #service-pillars {
+            padding-bottom: 120px;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Card mínimo ligeiramente maior */
+            gap: 30px; /* Gap mais apertado */
+        }
+
+        .pillar-card {
+            background-color: var(--card-bg);
+            padding: 35px; /* Mais padding interno */
+            border-radius: 12px; /* Cantos mais arredondados */
+            border: 1px solid var(--highlight-bg); /* Borda sutil */
+            border-top: 4px solid var(--primary-blue); /* Borda superior de destaque */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--blue-glow-medium) inset; /* Sombra mais premium + inset glow */
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            height: 100%; /* Garante que todos os cards tenham a mesma altura */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px); /* Movimento de hover mais pronunciado */
+            box-shadow: 0 15px 30px rgba(0, 123, 255, 0.3), 0 0 30px var(--light-blue); /* Sombra e glow mais intensos no hover */
+            border-color: var(--light-blue);
+            border-top: 4px solid var(--light-blue);
+        }
+
+        .pillar-icon {
+            color: var(--light-blue);
+            font-size: 3.5rem; /* Ícone maior */
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 50px;
+            height: 50px;
+            text-shadow: 0 0 10px var(--blue-glow-light); /* Glow no ícone */
+        }
+        
+        .pillar-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.7rem; /* Título do card maior */
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .pillar-card p {
+            font-size: 1.0rem; /* Parágrafo um pouco maior */
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            flex-grow: 1; /* Faz o parágrafo crescer para empurrar o resto para baixo (igualando a altura) */
+        }
+
+        .service-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 25px; 
+            margin-top: auto; /* Empurra a lista e o botão para baixo (igualando a altura do card) */
+        }
+
+        .service-list li {
+            padding: 8px 0; /* Mais padding na lista */
+            color: var(--text-light);
+            font-size: 0.95rem;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.15); /* Dotted para dashed */
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-list li::before {
+            content: '✓'; /* Trocando o "»" por um "✓" para maior clareza de feature/benefício */
+            color: var(--light-blue);
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        
+        /* Botão de link Saiba Mais dentro do card */
+        .card-link-button {
+            display: block; 
+            margin-top: 15px; 
+            padding: 12px 15px;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px; /* Borda um pouco mais arredondada */
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .card-link-button:hover {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4); /* Adiciona sombra no botão ao hover */
+        }
+        
+        /* Seção de CTA de Fechamento */
+        .cta-section {
+            background-color: var(--card-bg); /* Cor ligeiramente diferente do fundo geral para destaque */
+            text-align: center;
+            padding: 80px 0; /* Mais padding */
+            border-top: 1px solid var(--highlight-bg);
+            border-bottom: 1px solid var(--highlight-bg);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem; /* Título do CTA maior */
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            /* Estilo do botão de CTA já estava bom, apenas ajustei o hover */
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px; /* Mais arredondado */
+            font-weight: 700; /* Mais forte */
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .cta-button:hover {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
+            transform: translateY(-3px); /* Movimento mais notável */
+            box-shadow: 0 10px 20px rgba(0, 153, 255, 0.5); /* Sombra/Glow forte no hover */
+        }
+
+
+        /* --- Responsividade --- */
+        @media (max-width: 992px) {
+            .nav-menu li { margin-left: 20px; }
+            .section-title { font-size: 2.5rem; }
+            #services-hero h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; }
+            .nav-menu { margin-top: 15px; }
+            .nav-menu ul { flex-direction: column; text-align: center; }
+            .nav-menu li { margin: 10px 0; }
+
+            #services-hero h1 { font-size: 2.2rem; }
+            #services-hero p { font-size: 1.1rem; }
+            
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pillar-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
+                Fluydez<span>Cyber</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html" class="active">Serviços</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="treinamentos.html">Treinamentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="services-hero">
+            <div class="container">
+                <h1>Nossas Soluções em <span class="text-primary-blue">Cibersegurança & GRC</span></h1>
+                <p>Oferecemos um portfólio completo de serviços desenhados para proteger seus ativos digitais, garantir a conformidade regulatória e construir um sistema de gestão de segurança da informação robusto e resiliente.</p>
+                
+            </div>
+        </section>
+        
+        <section id="service-pillars">
+            <div class="container">
+                <h2 class="section-title">Pilares Fundamentais da Proteção</h2>
+                <p class="section-subtitle">Nossos serviços estão agrupados para fornecer uma cobertura completa, desde a identificação proativa de riscos até a resposta a incidentes e a gestão de conformidade.</p>
+
+                <div class="pillar-grid">
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-half"><path d="M20 13c0 5-8 10-8 10s-8-5-8-10V5l8-3 8 3v8Z"/><path d="M4 12h8"/><path d="M12 22V4"/></svg>
+                        </div>
+                        <h3>Cibersegurança e Auditoria Cyber</h3>
+                        <p>Aumente a resiliência contra ataques com a gestão de riscos, testes de intrusão, segurança de aplicações e uma estrutura de segurança sólida.</p>
+                        <ul class="service-list">
+                            <li>✓ Mapeamento e Avaliação de Riscos.</li>
+                            <li>✓ Testes de Invasão (Pentest) e Análise de Vulnerabilidades.</li>
+                            <li>✓ Resposta a Incidentes (IR) e Gestão de Crises.</li>
+                            <li>✓ Treinamento de Conscientização de Segurança.</li>
+                        </ul>
+                        <a href="serv_cyberaut.html" class="card-link-button">Nossas Soluções Cyber</a>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale"><path d="m14 18 6-6 4 2v3l-4 2"/><path d="M14 18V5h-3v4H7V5H4v13l3 2 7-2Z"/><path d="M7 21h10"/></svg>
+                        </div>
+                        <h3>Governança, Risco e ISO 27001</h3>
+                        <p>Implemente um SGSI para gerenciar riscos, padronizar controles de segurança da informação e alcançar a certificação ISO 27001.</p>
+                        <ul class="service-list">
+                            <li>✓ Consultoria e Implementação ISO/IEC 27001 e 27002.</li>
+                            <li>✓ Mapeamento e Avaliação de Riscos (Risk Assessment).</li>
+                            <li>✓ Auditoria Interna e Pré-Certificação.</li>
+                            <li>✓ Desenho e Otimização de Políticas e Controles.</li>
+                        </ul>
+                        <a href="governancati.html" class="card-link-button">Governança de TI e ISO 27001</a>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <h3>LGPD e Privacidade (ISO 27701)</h3>
+                        <p>Garanta a conformidade total com a Lei Geral de Proteção de Dados (LGPD) e o padrão internacional de privacidade (ISO 27701), fortalecendo a confiança.</p>
+                        <ul class="service-list">
+                            <li>✓ Adequação e Programa de Governança em Privacidade (LGPD).</li>
+                            <li>✓ DPO as a Service (Encarregado de Dados Terceirizado).</li>
+                            <li>✓ Implementação do SGPI (ISO/IEC 27701).</li>
+                            <li>✓ Relatório de Impacto à Proteção de Dados (RIPD/DPIA).</li>
+                        </ul>
+                        <a href="serv_privacidade.html" class="card-link-button">Entenda Sobre Privacidade</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Pronto para Começar a Proteger Seu Negócio?</h2>
+                <p>Nossos especialistas estão prontos para analisar seu cenário e propor um plano de segurança e conformidade personalizado e eficiente.</p>
+                <a href="contato.html" class="cta-button">Fale com um Especialista Agora</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Navegação Rápida:
+                <a href="index.html">Home</a> |
+                <a href="servicos.html">Serviços</a> |
+                <a href="publicacoes.html">Publicações</a> |
+                <a href="sobre.html">Sobre</a> |
+                <a href="contato.html">Contato</a>
+            </p>
+            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
