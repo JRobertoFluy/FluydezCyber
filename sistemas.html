@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistemas - Fluydez Cyber</title>
+  <meta name="description" content="Desenvolvimento e operação de sistemas Micro-SaaS para GRC.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-bg: #1a1a1a;
+      --card-bg: #252525;
+      --primary-orange: #FF6B35;
+      --light-orange: #FF8555;
+      --text-light: #ffffff;
+      --text-secondary: #999999;
+      --accent-dark: #0f0f0f;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    a {
+      color: var(--primary-orange);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--light-orange);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--primary-orange);
+    }
+    nav {
+      display: flex;
+      gap: 40px;
+    }
+    nav a {
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--primary-orange);
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 0 40px;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    .hero h2 span {
+      color: var(--primary-orange);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .content {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 53, 0.1);
+      margin-bottom: 40px;
+    }
+    .content h3 {
+      color: var(--primary-orange);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .content p {
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+    .content ul {
+      color: var(--text-secondary);
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    .content li {
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+    footer {
+      background: var(--accent-dark);
+      padding: 60px 0 30px;
+      margin-top: 100px;
+      border-top: 1px solid rgba(255, 107, 53, 0.2);
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .back-link:hover {
+      background: rgba(255, 107, 53, 0.2);
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fluydez Cyber</h1>
+      <nav>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contato">Contato</a>
+      </nav>
+    </header>
+
+    <a href="index.html" class="back-link">← Voltar</a>
+
+    <section class="hero">
+      <h2><span>Sistemas</span> Micro-SaaS</h2>
+      <p>Desenvolvimento e operação de plataformas para apoiar áreas de GRC</p>
+    </section>
+
+    <div class="content">
+      <h3>Sobre Nossos Sistemas</h3>
+      <p>Desenvolvemos e operamos sistemas Micro-SaaS especializados para apoiar e viabilizar as áreas de Governança, Riscos e Compliance. Nossas soluções são modernas, escalando com sua organização e fornecendo dados em tempo real para tomada de decisões.</p>
+      
+      <h3>Soluções Oferecidas</h3>
+      <ul>
+        <li><strong>Plataformas de GRC:</strong> Sistemas integrados para governança, gerenciamento de riscos e compliance</li>
+        <li><strong>Ferramentas de Monitoramento:</strong> Soluções para monitoramento contínuo de conformidade</li>
+        <li><strong>Portais de Reportes:</strong> Dashboards e relatórios customizados para executivos</li>
+        <li><strong>Integrações:</strong> Conexão com seus sistemas existentes</li>
+      </ul>
+      
+      <h3>Benefícios</h3>
+      <ul>
+        <li>Automatização de processos de GRC</li>
+        <li>Redução de riscos operacionais</li>
+        <li>Melhoria na conformidade regulatória</li>
+        <li>Aumenta da eficiência operacional</li>
+        <li>Dados em tempo real para decisões estratégicas</li>
+      </ul>
+      
+      <h3>Arquitetura em Nuvem</h3>
+      <p>Todos os nossos sistemas são construídos em arquitetura moderna em nuvem, garantindo:</p>
+      <ul>
+        <li>Alta disponibilidade e confiabilidade</li>
+        <li>Escalabilidade automática</li>
+        <li>Segurança enterprise-grade</li>
+        <li>Conformidade com padrões internacionais</li>
+        <li>Backup e disaster recovery</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p style="text-align: center; color: var(--text-secondary);">&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
