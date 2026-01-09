@@ -3,342 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Fluydez Cyber - Segurança, GRC e Privacidade</title>
-    
+    <title>Fluydez Cyber - Seguranca, GRC e Privacidade</title>
+    <meta name="description" content="Consultoria em Seguranca Digital, GRC, LGPD e ISO 27001. Protegemos seu negocio com solucoes profissionais.">
+    <meta name="keywords" content="Seguranca, GRC, LGPD, ISO 27001, Consultoria">
+    <meta name="author" content="Fluydez Cyber">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
-        /* * DESIGN SYSTEM (Fluydez Cyber) */
         :root {
-            --dark-bg: #121212;
-            --card-bg: #1C1C1E;
-            --primary-blue: #007BFF;
-            --light-blue: #00AFFF;
-            --text-light: #F0F0F0;
-            --text-secondary: #AAAAAA;
-            --highlight-bg: #1A1A1A; 
+            --dark-bg: #1a1a1a;
+            --card-bg: #252525;
+            --primary-orange: #FF6B35;
+            --light-orange: #FF8555;
+            --text-light: #ffffff;
+            --text-secondary: #999999;
+            --accent-dark: #0f0f0f;
+            --gradient-orange: linear-gradient(135deg, #FF6B35 0%, #FF8555 100%);
         }
-
-        /* --- Reset Básico --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* --- Configurações Globais --- */
         html {
             scroll-behavior: smooth;
         }
-
         body {
-            font-family: 'Poppins', 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-light);
             line-height: 1.6;
         }
-
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
         h1, h2, h3 {
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.2;
         }
-        
-        section {
-            padding: 80px 0;
+        a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--text-light);
+        a:hover {
+            color: var(--light-orange);
         }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            margin-bottom: 60px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Estilo para destaque da cor azul */
-        .text-primary-blue {
-            color: var(--primary-blue);
-        }
-
-        /* --- Header e Logo --- */
-        .header {
-            background-color: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--card-bg);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header .container {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
         }
-
-        /* Estilos do Logo (Texto + Imagem) */
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            text-decoration: none;
-            display: flex; /* Permite alinhar o texto e a imagem */
-            align-items: center;
-            gap: 8px; /* Espaço entre o logo e o texto */
+        header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-orange);
         }
-        
-        /* Estilo da Imagem do Logo */
-        .logo-img {
-            height: 45px; /* Tamanho da imagem do logo (+50% de 30px) */
-            width: auto;
-        }
-
-        .logo span {
-            color: var(--primary-blue);
-        }
-
-        .nav-menu ul {
-            list-style: none;
+        nav {
             display: flex;
+            gap: 40px;
         }
-
-        .nav-menu li {
-            margin-left: 25px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 400;
+        nav a {
+            color: var(--text-light);
+            font-weight: 500;
             transition: color 0.3s ease;
         }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--primary-blue);
+        nav a:hover {
+            color: var(--primary-orange);
         }
-        
-        /* --- Rodapé --- */
-        .footer {
-            background-color: var(--dark-bg);
-            border-top: 1px solid var(--card-bg);
-            padding: 30px 0;
+        .hero {
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            padding: 100px 0 60px;
         }
-
-        /* --- ESTILOS ESPECÍFICOS DA PÁGINA HOME --- */
-        
-        /* Hero Section com Imagem de Fundo */
-        #hero-section {
-            padding: 150px 0;
-            text-align: center;
-            color: var(--text-light);
-            /* APLICAÇÃO DA IMAGEM DE FUNDO */
-            background-image: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), 
-                              url('imagens/site_home.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
-        }
-
-        #hero-section h1 {
-            font-size: 3.8rem;
+        .hero h2 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
         }
-
-        #hero-section p {
-            font-size: 1.5rem;
-            max-width: 900px;
-            margin: 0 auto 40px auto;
-            color: var(--text-secondary);
-            font-weight: 300;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        .hero h2 span {
+            color: var(--primary-orange);
         }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: var(--primary-blue);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
+        .hero p {
             font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: 2px solid var(--primary-blue);
+            color: var(--text-secondary);
+            margin-bottom: 40px;
         }
-
-        .cta-button:hover {
-            background-color: var(--light-blue);
-            border-color: var(--light-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0, 123, 255, 0.4);
-        }
-
-        /* Destaques (Features/3 Pilares) */
-        #features-section {
-            background-color: var(--dark-bg);
-        }
-
-        .features-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            text-align: center;
+            padding: 80px 0;
         }
-
-        .feature-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .service-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-orange);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+        .service-card h3 {
+            color: var(--primary-orange);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .service-card a {
+            display: inline-block;
+            color: var(--primary-orange);
+            font-weight: 600;
+            padding: 10px 0;
+            border-bottom: 2px solid transparent;
             transition: border-color 0.3s ease;
         }
-        
-        .feature-card:hover {
-            border-color: var(--primary-blue);
+        .service-card a:hover {
+            border-bottom-color: var(--primary-orange);
         }
-
-        .feature-icon {
-            color: var(--primary-blue);
+        .icon {
             font-size: 3rem;
-            margin-bottom: 15px;
-            display: block;
+            margin-bottom: 20px;
         }
-
-        .feature-card h3 {
-            font-size: 1.4rem;
+        footer {
+            background: var(--accent-dark);
+            padding: 60px 0 30px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-section h4 {
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section li {
             margin-bottom: 10px;
         }
-
-        .feature-card p {
-            font-size: 0.95rem;
+        .footer-section a {
             color: var(--text-secondary);
         }
-        
-        /* --- Responsividade --- */
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 107, 53, 0.1);
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: var(--primary-orange);
+            color: var(--dark-bg);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+            color: var(--text-secondary);
+        }
         @media (max-width: 768px) {
-            .header .container { flex-direction: column; }
-            .nav-menu { margin-top: 15px; }
-            .nav-menu ul { flex-direction: column; text-align: center; }
-            .nav-menu li { margin: 10px 0; }
-
-            #hero-section { padding: 100px 0; }
-            #hero-section h1 { font-size: 2.5rem; }
-            #hero-section p { font-size: 1.2rem; }
-            
-            .features-grid {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-
-    <header class="header">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="imagens/Logo_Fluydez.png" alt="Logo Fluydez Cyber" class="logo-img">
-                Fluydez<span>Cyber</span>
-            </a>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="servicos.html">Serviços</a></li>
-                    <li><a href="publicacoes.html">Publicações</a></li>
-                    <li><a href="ferramentas.html">Ferramentas</a></li>
-                    <li><a href="treinamentos.html">Treinamentos</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
+    <div class="container">
+        <header>
+            <h1>Fluydez Cyber</h1>
+            <nav>
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <main>
+        <section class="hero">
+            <h2>Especialistas em servicos para a <span>Protecao e Conformidade</span> da sua empresa.</h2>
+            <p>Consultoria em Seguranca Digital, GRC, LGPD e ISO 27001</p>
+        </section>
 
-        <section id="hero-section">
-            <div class="container">
-                <h1>Segurança Digital que <span class="text-primary-blue">Fluy</span> com Seu Negócio</h1>
-                <p>Implementamos cibersegurança, governança e conformidade (LGPD, ISO 27001) para transformar riscos em resiliência e confiança.</p>
-                <a href="servicos.html" class="cta-button">Ver Nossas Soluções</a>
+        <section class="services-grid" id="servicos">
+            <div class="service-card">
+                <div class="icon">🔐</div>
+                <h3>Nossa Atuacao</h3>
+                <p>Foco em Consultoria, Educacao e Treinamentos para as necessidades de Governanca, Riscos e Compliance dos nossos clientes.</p>
+                <a href="#">Saiba mais →</a>
+            </div>
+            <div class="service-card">
+                <div class="icon">🛡️</div>
+                <h3>Consultoria</h3>
+                <p>Trabalhamos para a elevacao dos padroes de Seguranca da Informacao, Privacidade de Dados, Governanca de IA e corporativa.</p>
+                <a href="#">Saiba mais →</a>
+            </div>
+            <div class="service-card">
+                <div class="icon">📚</div>
+                <h3>Educacao & Cultura</h3>
+                <p>A missao e acelerar a maturidade de profissionais e times de Seguranca da Informacao, Privacidade de Dados e Governanca.</p>
+                <a href="#">Saiba mais →</a>
+            </div>
+            <div class="service-card">
+                <div class="icon">⚙️</div>
+                <h3>Sistemas</h3>
+                <p>Desenvolvimento e operacao de sistemas Micro-SaaS para apoiar e viabilizar as areas de Governanca, Riscos e Compliance.</p>
+                <a href="#">Saiba mais →</a>
+            </div>
+            <div class="service-card">
+                <div class="icon">👥</div>
+                <h3>Quem Somos</h3>
+                <p>Conheca um pouco da historia da Fluydez Cyber, nossa trajetoria e os profissionais de alto nivel que fazem parte da equipe.</p>
+                <a href="#">Saiba mais →</a>
             </div>
         </section>
-        
-        <section id="features-section">
-            <div class="container">
-                <h2 class="section-title">Nossa Estratégia de Proteção</h2>
-                <p class="section-subtitle">Focamos em três pilares essenciais para blindar sua organização e garantir o compliance regulatório.</p>
+    </div>
 
-                <div class="features-grid">
-                    
-                    <div class="feature-card">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M20 13c0 5-8 10-8 10s-8-5-8-10V5l8-3 8 3v8Z"/><path d="m9 12 2 2 4-4"/></svg>
-                        </span>
-                        <h3>Cibersegurança Avançada</h3>
-                        <p>Defesa 24/7, resposta a incidentes e testes de invasão para identificar e neutralizar ameaças antes que causem danos.</p>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>A Empresa</h4>
+                    <ul>
+                        <li><a href="#">Quem Somos</a></li>
+                        <li><a href="#">Entre em Contato</a></li>
+                        <li><a href="#">Politica de Privacidade</a></li>
+                        <li><a href="#">Direitos dos Titulares</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Consultoria</h4>
+                    <ul>
+                        <li><a href="#">Seguranca da Informacao</a></li>
+                        <li><a href="#">Privacidade de Dados</a></li>
+                        <li><a href="#">Governanca de IA</a></li>
+                        <li><a href="#">Governanca Corporativa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Educacao & Cultura</h4>
+                    <ul>
+                        <li><a href="#">Cursos e Treinamentos</a></li>
+                        <li><a href="#">Mentoria Profissional</a></li>
+                        <li><a href="#">Palestras</a></li>
+                        <li><a href="#">Programas de Conscientizacao</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="tel:+5511995572222">(11) 99557-2222</a></li>
+                        <li><a href="mailto:contato@fluydez.com.br">contato@fluydez.com.br</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">📘</a>
+                        <a href="#" title="LinkedIn">💼</a>
+                        <a href="#" title="YouTube">📹</a>
                     </div>
-                    
-                    <div class="feature-card">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-git-branch"><circle cx="6" cy="18" r="3"/><path d="M6 15v-3"/><path d="M18 6h-3"/><path d="M12 21a5 5 0 0 0 5-5v-2a5 5 0 0 0-5-5h-2a5 5 0 0 0-5 5v2a5 5 0 0 0 5 5h2a5 5 0 0 0 5-5V10"/><circle cx="18" cy="6" r="3"/></svg>
-                        </span>
-                        <h3>Governança e GRC</h3>
-                        <p>Implementação de normas como ISO 27001 para criar um Sistema de Gestão de Segurança da Informação (SGSI) sólido.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-key-round"><path d="M2 18a4 4 0 0 1 4-4h14"/><path d="m15 7 4 4"/><path d="M15 7a4 4 0 0 1 4 4"/></svg>
-                        </span>
-                        <h3>Privacidade e LGPD</h3>
-                        <p>Adequação à LGPD, DPO as a Service e certificação ISO 27701 para proteger dados pessoais e a reputação da sua marca.</p>
-                    </div>
-
                 </div>
             </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>Navegação Rápida: 
-                <a href="index.html" class="text-primary-blue" style="color: var(--primary-blue);">Home</a> |
-                <a href="servicos.html" class="text-primary-blue" style="color: var(--primary-blue);">Serviços</a> |
-                <a href="publicacoes.html" class="text-primary-blue" style="color: var(--primary-blue);">Publicações</a> |
-                <a href="sobre.html" class="text-primary-blue" style="color: var(--primary-blue);">Sobre</a> |
-                <a href="contato.html" class="text-primary-blue" style="color: var(--primary-blue);">Contato</a>
-            </p>
-            <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
-
 </body>
 </html>
