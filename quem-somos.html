@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quem Somos - Fluydez Cyber</title>
+  <meta name="description" content="Conheça a história, trajetória e profissionais da Fluydez Cyber.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-bg: #1a1a1a;
+      --card-bg: #252525;
+      --primary-orange: #FF6B35;
+      --light-orange: #FF8555;
+      --text-light: #ffffff;
+      --text-secondary: #999999;
+      --accent-dark: #0f0f0f;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    a {
+      color: var(--primary-orange);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--light-orange);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--primary-orange);
+    }
+    nav {
+      display: flex;
+      gap: 40px;
+    }
+    nav a {
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--primary-orange);
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 0 40px;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    .hero h2 span {
+      color: var(--primary-orange);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .content {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 53, 0.1);
+      margin-bottom: 40px;
+    }
+    .content h3 {
+      color: var(--primary-orange);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .content p {
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+    .content ul {
+      color: var(--text-secondary);
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    .content li {
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+    footer {
+      background: var(--accent-dark);
+      padding: 60px 0 30px;
+      margin-top: 100px;
+      border-top: 1px solid rgba(255, 107, 53, 0.2);
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .back-link:hover {
+      background: rgba(255, 107, 53, 0.2);
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fluydez Cyber</h1>
+      <nav>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contato">Contato</a>
+      </nav>
+    </header>
+
+    <a href="index.html" class="back-link">← Voltar</a>
+
+    <section class="hero">
+      <h2><span>Quem</span> Somos</h2>
+      <p>Conheça a Fluydez Cyber - Especialistas em Segurança, GRC e Privacidade</p>
+    </section>
+
+    <div class="content">
+      <h3>Nossa História</h3>
+      <p>A Fluydez Cyber foi fundada com a missão de transformar a forma como as organizações lidam com Governança, Riscos e Compliance. Desde o início, nos comprometemos em oferecer soluções inovadoras e consultoria especializada para empresas de todos os tamanhos.</p>
+      
+      <h3>Nossa Visão</h3>
+      <p>Ser a empresa de referência em GRC, segurança da informação e privacidade de dados, fornecendo soluções que empoderam organizações a operar com confiabilidade, conformidade e segurança.</p>
+      
+      <h3>Nossos Valores</h3>
+      <ul>
+        <li><strong>Excelência:</strong> Dedicados a entregar qualidade superior em todos os nossos serviços</li>
+        <li><strong>Integridade:</strong> Agimos com tica e transparência em todos os relacionamentos</li>
+        <li><strong>Inovação:</strong> Buscamos constantemente novas formas de resolver desafios complexos</li>
+        <li><strong>Parcerias:</strong> Construimos relacionamentos de longo prazo baseados na confiança</li>
+        <li><strong>Expertise:</strong> Mantemos as melhores práticas e conhecimento profundo do mercado</li>
+      </ul>
+      
+      <h3>Nossa Equipe</h3>
+      <p>Contamos com profissionais altamente capacitados e experientes em suas áreas de atuação. Nossa equipe é composta por:</p>
+      <ul>
+        <li>Consultores especialistas em GRC com experiência em múltiplos setores</li>
+        <li>Instrutores certificados em padrões internacionais</li>
+        <li>Desenvolvedores especializados em soluções de segurança</li>
+        <li>Profissionais comprometidos com seu desenvolvimento contínuo</li>
+      </ul>
+      
+      <h3>Por que escolher a Fluydez Cyber?</h3>
+      <ul>
+        <li>Conhecimento profundo em regulamentações e padrões internacionais</li>
+        <li>Abordagem customizada para cada cliente</li>
+        <li>Soluções que se adaptam ao seu negócio</li>
+        <li>Suporte continuado e relacionamento de longo prazo</li>
+        <li>Tecnologia de ponta e melhores práticas do mercado</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p style="text-align: center; color: var(--text-secondary);">&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
