@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Fluydez Cyber</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --dark-bg: #1a1a1a;
+      --card-bg: #252525;
+      --primary-orange: #FF6B35;
+      --text-light: #ffffff;
+      --text-secondary: #999999;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--primary-orange);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-orange);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary-orange);
+    }
+
+    .hero {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #FF6B35, #FFB6B3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .blog-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 2rem;
+      border-top: 3px solid var(--primary-orange);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+    }
+
+    .blog-date {
+      color: var(--primary-orange);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    .blog-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      display: inline-block;
+      color: var(--primary-orange);
+      text-decoration: none;
+      font-weight: 600;
+      transition: gap 0.3s;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      border: 1px dashed var(--primary-orange);
+    }
+
+    .empty-state h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-orange);
+    }
+
+    .empty-state p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--primary-orange);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #E85A2C;
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 999;
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+
+    footer {
+      background-color: var(--card-bg);
+      padding: 2rem 0;
+      border-top: 1px solid var(--primary-orange);
+      margin-top: 4rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Fluydez Cyber</div>
+        <nav>
+          <a href="index.html">Início</a>
+          <a href="index.html#servicos">Serviços</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#contato">Contato</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>📚 Blog de Segurança</h1>
+        <p>Artigos, dicas e insights sobre Segurança da Informação, LGPD, GRC e Governança</p>
+      </section>
+
+      <section class="blog-grid" id="artigos">
+        <!-- Os artigos serão adicionados aqui -->
+        <div class="empty-state">
+          <h2>Nenhum artigo publicado ainda</h2>
+          <p>Estamos preparando conteúdo de qualidade para você. Volte em breve!</p>
+          <p style="font-size: 0.9rem; margin-top: 1rem;">Tem dúvidas ou sugestões de temas? Fale com nossos especialistas pelo WhatsApp!</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Fluydez Cyber. Todos os direitos reservados.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">Especialistas em Segurança Digital, GRC, LGPD e ISO 27001</p>
+    </div>
+  </footer>
+
+  <!-- Botão do WhatsApp -->
+  <a href="https://wa.me/5511995572222?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20nossos%20servi%u00e7os%20de%20seguran%C3%A7a%20digital" class="whatsapp-button" title="Fale conosco no WhatsApp">
+    💵
+  </a>
+
+  <script>
+    // Exemplo de como adicionar artigos dinamicamente
+    // Este é um template que pode ser expandido
+    const artigos = [
+      // {titulo: "Título do Artigo", data: "01 de Janeiro de 2025", resumo: "Resumo do artigo...", link: "#"}
+    ];
+
+    function renderizarArtigos() {
+      const container = document.getElementById('artigos');
+      
+      if (artigos.length === 0) {
+        // Manter o empty state
+        return;
+      }
+
+      container.innerHTML = artigos.map(artigo => `
+        <div class="blog-card">
+          <div class="blog-date">${artigo.data}</div>
+          <h3>${artigo.titulo}</h3>
+          <p>${artigo.resumo}</p>
+          <a href="${artigo.link}" class="read-more">Ler mais →</a>
+        </div>
+      `).join('');
+    }
+
+    // Renderizar artigos ao carregar a página
+    document.addEventListener('DOMContentLoaded', renderizarArtigos);
+  </script>
+</body>
+</html>
